@@ -1,5 +1,10 @@
-// Add your dependencies here
-
 dependencies {
-
+    compileOnly('com.github.GTNewHorizons:BuildCraft:7.1.28:api') { transitive = false }
+    compileOnly('com.github.GTNewHorizons:EnderIO:2.3.1.48:api') { transitive = false }
+    compileOnly('com.github.GTNewHorizons:NotEnoughItems:2.3.16-GTNH:dev') { transitive = false }
+    compileOnly('com.github.GTNewHorizons:waila:1.5.22:api') { transitive = false }
+    compileOnly('curse.maven:agricraft-225635:2284133-sources')
+    compileOnly('curse.maven:cofh-lib-220333:2388748')
+    compileOnly('igwmod:IGW-Mod-1.7.10:1.1.12-34:userdev') { transitive = false }
+    compileOnly('net.industrial-craft:industrialcraft-2:2.2.828-experimental:api')
 }
