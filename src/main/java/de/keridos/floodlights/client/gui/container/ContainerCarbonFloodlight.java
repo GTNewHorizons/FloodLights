@@ -57,6 +57,7 @@ public class ContainerCarbonFloodlight extends Container {
 
     @Override
     public boolean canInteractWith(EntityPlayer player) {
-        return carbonFloodlight.isUseableByPlayer(player);  //To change body of implemented methods use File | Settings | File Templates.
+        return carbonFloodlight.isUseableByPlayer(
+                player); // To change body of implemented methods use File | Settings | File Templates.
     }
 }

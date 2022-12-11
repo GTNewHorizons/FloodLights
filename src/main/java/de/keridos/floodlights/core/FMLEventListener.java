@@ -10,8 +10,7 @@ import cpw.mods.fml.common.gameevent.TickEvent;
 public class FMLEventListener {
     private static FMLEventListener instance = null;
 
-    private FMLEventListener() {
-    }
+    private FMLEventListener() {}
 
     public static FMLEventListener getInstance() {
         if (instance == null) {
@@ -21,31 +20,23 @@ public class FMLEventListener {
     }
 
     @SubscribeEvent
-    public void onPlayerTick(TickEvent.PlayerTickEvent event) {
+    public void onPlayerTick(TickEvent.PlayerTickEvent event) {}
 
-    }
-
-    //Called when the client ticks.
+    // Called when the client ticks.
     @SubscribeEvent
-    public void onClientTick(TickEvent.ClientTickEvent event) {
+    public void onClientTick(TickEvent.ClientTickEvent event) {}
 
-    }
-
-    //Called when the server ticks. Usually 20 ticks a second.
+    // Called when the server ticks. Usually 20 ticks a second.
     @SubscribeEvent
     public void onServerTick(TickEvent.ServerTickEvent event) {
-        //EventListener.lightHandler.updateLights();
+        // EventListener.lightHandler.updateLights();
     }
 
-    //Called when a new frame is displayed (See fps)
+    // Called when a new frame is displayed (See fps)
     @SubscribeEvent
-    public void onRenderTick(TickEvent.RenderTickEvent event) {
+    public void onRenderTick(TickEvent.RenderTickEvent event) {}
 
-    }
-
-    //Called when the world ticks
+    // Called when the world ticks
     @SubscribeEvent
-    public void onWorldTick(TickEvent.WorldTickEvent event) {
-
-    }
+    public void onWorldTick(TickEvent.WorldTickEvent event) {}
 }

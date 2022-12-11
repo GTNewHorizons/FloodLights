@@ -7,8 +7,7 @@ package de.keridos.floodlights.core;
 public class EventListener {
     private static EventListener instance;
 
-    private EventListener() {
-    }
+    private EventListener() {}
 
     public static EventListener getInstance() {
         if (instance == null) {
@@ -16,5 +15,4 @@ public class EventListener {
         }
         return instance;
     }
-
 }

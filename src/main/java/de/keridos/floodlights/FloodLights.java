@@ -20,22 +20,26 @@ import de.keridos.floodlights.init.ModBlocks;
 import de.keridos.floodlights.init.ModItems;
 import de.keridos.floodlights.reference.Reference;
 import de.keridos.floodlights.util.RandomUtil;
+import java.util.Map;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
-
-import java.util.Map;
 
 /**
  * Created by Keridos on 28.02.14.
  * This Class is the Main Class of the Mod.
  */
-
-@Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION, dependencies = Reference.DEPENDENCIES)
+@Mod(
+        modid = Reference.MOD_ID,
+        name = Reference.MOD_NAME,
+        version = Reference.VERSION,
+        dependencies = Reference.DEPENDENCIES)
 public class FloodLights {
     @Mod.Instance(Reference.MOD_ID)
     public static FloodLights instance;
 
-    @SidedProxy(clientSide = Reference.PROXY_LOCATION + ".ClientProxy", serverSide = Reference.PROXY_LOCATION + ".CommonProxy")
+    @SidedProxy(
+            clientSide = Reference.PROXY_LOCATION + ".ClientProxy",
+            serverSide = Reference.PROXY_LOCATION + ".CommonProxy")
     public static CommonProxy proxy;
 
     private ConfigHandler configHandler = ConfigHandler.getInstance();
@@ -71,9 +75,7 @@ public class FloodLights {
     }
 
     @Mod.EventHandler
-    public static void postInit(FMLServerStartingEvent event) {
-
-    }
+    public static void postInit(FMLServerStartingEvent event) {}
 
     public void registerEventListeners() {
         MinecraftForge.EVENT_BUS.register(EventListener.getInstance());

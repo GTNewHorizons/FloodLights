@@ -1,5 +1,7 @@
 package de.keridos.floodlights.client.gui;
 
+import static de.keridos.floodlights.util.GeneralUtil.safeLocalize;
+
 import de.keridos.floodlights.client.gui.container.ContainerElectricFloodlight;
 import de.keridos.floodlights.reference.Names;
 import de.keridos.floodlights.reference.Textures;
@@ -9,8 +11,6 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.util.ForgeDirection;
 import org.lwjgl.opengl.GL11;
-
-import static de.keridos.floodlights.util.GeneralUtil.safeLocalize;
 
 /**
  * Created by Keridos on 09/10/2014.
@@ -43,4 +43,3 @@ public class GuiElectricFloodlight extends GuiContainer {
         drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
     }
 }
-

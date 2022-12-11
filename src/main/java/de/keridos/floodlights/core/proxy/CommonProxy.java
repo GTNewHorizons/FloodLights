@@ -8,19 +8,13 @@ import net.minecraft.world.World;
  */
 public class CommonProxy {
 
-    public void initRenderers() {
+    public void initRenderers() {}
 
-    }
+    public void initSounds() {}
 
-    public void initSounds() {
+    public void initHandlers() {}
 
-    }
-
-    public void initHandlers() {
-
-    }
-
-    public World getWorld(){
+    public World getWorld() {
         return null;
     }
 }

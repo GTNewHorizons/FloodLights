@@ -30,20 +30,23 @@ public class ClientProxy extends CommonProxy {
     public void initRenderers() {
         RenderIDs.ROTATABLE_BLOCK = RenderingRegistry.getNextAvailableRenderId();
         RenderingRegistry.registerBlockHandler(RenderIDs.ROTATABLE_BLOCK, new RotatableBlockRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySmallFloodlight.class, new TileEntitySmallFoodlightRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(
+                TileEntitySmallFloodlight.class, new TileEntitySmallFoodlightRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityGrowLight.class, new TileEntityGrowLightRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPhantomLight.class, new TileEntityPhantomLightRenderer());
-        MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.blockSmallElectricLight),
-                new SmallFloodlightItemRenderer(new TileEntitySmallFoodlightRenderer(), new TileEntitySmallFloodlight()));
-        MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.blockGrowLight),
+        ClientRegistry.bindTileEntitySpecialRenderer(
+                TileEntityPhantomLight.class, new TileEntityPhantomLightRenderer());
+        MinecraftForgeClient.registerItemRenderer(
+                Item.getItemFromBlock(ModBlocks.blockSmallElectricLight),
+                new SmallFloodlightItemRenderer(
+                        new TileEntitySmallFoodlightRenderer(), new TileEntitySmallFloodlight()));
+        MinecraftForgeClient.registerItemRenderer(
+                Item.getItemFromBlock(ModBlocks.blockGrowLight),
                 new GrowLightItemRenderer(new TileEntityGrowLightRenderer(), new TileEntityGrowLight()));
         RenderUtil.setupColors();
     }
 
     @Override
-    public void initSounds() {
-
-    }
+    public void initSounds() {}
 
     @Override
     public void initHandlers() {
@@ -53,7 +56,7 @@ public class ClientProxy extends CommonProxy {
     }
 
     @Override
-    public World getWorld(){
+    public World getWorld() {
         return Minecraft.getMinecraft().theWorld;
     }
 }

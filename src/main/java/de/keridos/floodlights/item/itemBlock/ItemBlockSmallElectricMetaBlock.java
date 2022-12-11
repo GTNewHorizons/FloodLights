@@ -9,9 +9,7 @@ import net.minecraft.item.ItemStack;
  * This Class
  */
 public class ItemBlockSmallElectricMetaBlock extends ItemBlockWithMetadata {
-    private final static String[] subNames = {
-            "smallFluorescent", "squareFluorescent"
-    };
+    private static final String[] subNames = {"smallFluorescent", "squareFluorescent"};
 
     public ItemBlockSmallElectricMetaBlock(Block block) {
         super(block, block);

@@ -45,7 +45,10 @@ public class BlockUVLightBlock extends BlockPhantomLight {
 
     @Override
     public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side) {
-        return ConfigHandler.uvLightRendered && (side == 0 || (!world.getBlock(x, y, z).isOpaqueCube() && world.getBlock(x, y, z) != ModBlocks.blockUVLightBlock));
+        return ConfigHandler.uvLightRendered
+                && (side == 0
+                        || (!world.getBlock(x, y, z).isOpaqueCube()
+                                && world.getBlock(x, y, z) != ModBlocks.blockUVLightBlock));
     }
 
     @Override

@@ -1,5 +1,7 @@
 package de.keridos.floodlights.block;
 
+import static de.keridos.floodlights.util.GeneralUtil.safeLocalize;
+
 import buildcraft.api.tools.IToolWrench;
 import cofh.api.item.IToolHammer;
 import crazypants.enderio.api.tool.ITool;
@@ -19,8 +21,6 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
-
-import static de.keridos.floodlights.util.GeneralUtil.safeLocalize;
 
 /**
  * Created by Keridos on 15/09/2015.
@@ -74,11 +74,23 @@ public class BlockUVLight extends BlockFL implements ITileEntityProvider {
     }
 
     @Override
-    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float p_149727_7_, float p_149727_8_, float p_149727_9_) {
+    public boolean onBlockActivated(
+            World world,
+            int x,
+            int y,
+            int z,
+            EntityPlayer player,
+            int side,
+            float p_149727_7_,
+            float p_149727_8_,
+            float p_149727_9_) {
         if (player.getHeldItem() == null && !world.isRemote && player.isSneaking()) {
             ((TileEntityUVLight) world.getTileEntity(x, y, z)).toggleInverted();
-            String invert = (((TileEntityUVLight) world.getTileEntity(x, y, z)).getInverted() ? Names.Localizations.TRUE : Names.Localizations.FALSE);
-            player.addChatMessage(new ChatComponentText(safeLocalize(Names.Localizations.INVERT) + ": " + safeLocalize(invert)));
+            String invert = (((TileEntityUVLight) world.getTileEntity(x, y, z)).getInverted()
+                    ? Names.Localizations.TRUE
+                    : Names.Localizations.FALSE);
+            player.addChatMessage(
+                    new ChatComponentText(safeLocalize(Names.Localizations.INVERT) + ": " + safeLocalize(invert)));
             return true;
         } else if (!world.isRemote && player.getHeldItem() != null) {
             if (ModCompatibility.BCLoaded || ModCompatibility.EnderIOLoaded) {
@@ -100,17 +112,20 @@ public class BlockUVLight extends BlockFL implements ITileEntityProvider {
                 }
             }
             if (ModCompatibility.IC2Loaded) {
-                if (player.isSneaking() && player.getHeldItem().getItem().getUnlocalizedName().equals("ic2.itemToolWrench")) {
+                if (player.isSneaking()
+                        && player.getHeldItem().getItem().getUnlocalizedName().equals("ic2.itemToolWrench")) {
                     world.func_147480_a(x, y, z, true);
                     return true;
                 }
-                if (player.isSneaking() && player.getHeldItem().getItem().getUnlocalizedName().equals("ic2.itemToolWrenchElectric")) {
+                if (player.isSneaking()
+                        && player.getHeldItem().getItem().getUnlocalizedName().equals("ic2.itemToolWrenchElectric")) {
                     world.func_147480_a(x, y, z, true);
                     return true;
                 }
             }
             if (player.getHeldItem().getItem() == Items.dye) {
-                ((TileEntityFL) world.getTileEntity(x, y, z)).setColor(15 - player.getHeldItem().getItemDamage());
+                ((TileEntityFL) world.getTileEntity(x, y, z))
+                        .setColor(15 - player.getHeldItem().getItemDamage());
                 return true;
             } else if (player.getHeldItem().getItem() == Item.getItemFromBlock(Blocks.wool) && !player.isSneaking()) {
                 ((TileEntityFL) world.getTileEntity(x, y, z)).setColor(16);

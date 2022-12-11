@@ -1,5 +1,7 @@
 package de.keridos.floodlights.client.gui.container;
 
+import static de.keridos.floodlights.util.GeneralUtil.isItemStackValidElectrical;
+
 import de.keridos.floodlights.client.gui.slot.ElectricSlot;
 import de.keridos.floodlights.tileentity.TileEntityFLElectric;
 import net.minecraft.entity.player.EntityPlayer;
@@ -7,8 +9,6 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-
-import static de.keridos.floodlights.util.GeneralUtil.isItemStackValidElectrical;
 
 /**
  * Created by Keridos on 09/10/2014.
@@ -60,6 +60,7 @@ public class ContainerElectricFloodlight extends Container {
 
     @Override
     public boolean canInteractWith(EntityPlayer player) {
-        return electricFloodlight.isUseableByPlayer(player);  //To change body of implemented methods use File | Settings | File Templates.
+        return electricFloodlight.isUseableByPlayer(
+                player); // To change body of implemented methods use File | Settings | File Templates.
     }
 }

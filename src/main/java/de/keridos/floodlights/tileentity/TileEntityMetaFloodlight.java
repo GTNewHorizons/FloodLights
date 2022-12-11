@@ -1,5 +1,7 @@
 package de.keridos.floodlights.tileentity;
 
+import static de.keridos.floodlights.util.MathUtil.rotate;
+
 import de.keridos.floodlights.handler.ConfigHandler;
 import de.keridos.floodlights.init.ModBlocks;
 import de.keridos.floodlights.reference.Names;
@@ -8,8 +10,6 @@ import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-
-import static de.keridos.floodlights.util.MathUtil.rotate;
 
 /**
  * Created by Keridos on 06.05.2015.
@@ -64,7 +64,6 @@ public class TileEntityMetaFloodlight extends TileEntityFL implements ISidedInve
         } else {
             this.toggleUpdateRun();
         }
-
     }
 
     @Override
@@ -109,7 +108,7 @@ public class TileEntityMetaFloodlight extends TileEntityFL implements ISidedInve
 
     @Override
     public int[] getAccessibleSlotsFromSide(int par1) {
-        return new int[]{0};
+        return new int[] {0};
     }
 
     @Override
@@ -185,14 +184,10 @@ public class TileEntityMetaFloodlight extends TileEntityFL implements ISidedInve
     }
 
     @Override
-    public void openInventory() {
-
-    }
+    public void openInventory() {}
 
     @Override
-    public void closeInventory() {
-
-    }
+    public void closeInventory() {}
 
     @Override
     public boolean isItemValidForSlot(int i, ItemStack itemstack) {
@@ -222,7 +217,12 @@ public class TileEntityMetaFloodlight extends TileEntityFL implements ISidedInve
 
     public void wideConeSource(boolean remove) {
         boolean[] failedBeams = new boolean[9];
-        if (!remove && worldObj.getBlock(this.xCoord + this.orientation.offsetX, this.yCoord + this.orientation.offsetY, this.zCoord + this.orientation.offsetZ).isOpaqueCube()) {
+        if (!remove
+                && worldObj.getBlock(
+                                this.xCoord + this.orientation.offsetX,
+                                this.yCoord + this.orientation.offsetY,
+                                this.zCoord + this.orientation.offsetZ)
+                        .isOpaqueCube()) {
             return;
         }
         for (int j = 0; j <= 16; j++) {
@@ -275,7 +275,7 @@ public class TileEntityMetaFloodlight extends TileEntityFL implements ISidedInve
                         TileEntityPhantomLight light = (TileEntityPhantomLight) worldObj.getTileEntity(x, y, z);
                         light.addSource(this.xCoord, this.yCoord, this.zCoord);
                     } else if (worldObj.getBlock(x, y, z).isOpaqueCube()) {
-                        if (i < 4) {   //This is for canceling the long rangs beams
+                        if (i < 4) { // This is for canceling the long rangs beams
                             failedBeams[j] = true;
                         }
                         break;
@@ -338,9 +338,9 @@ public class TileEntityMetaFloodlight extends TileEntityFL implements ISidedInve
     }
 
     public void narrowConeSource(boolean remove) {
-        boolean[] failedBeams = new boolean[9];    // for the additional beam to cancel when the main beams fail.
+        boolean[] failedBeams = new boolean[9]; // for the additional beam to cancel when the main beams fail.
         for (int j = 0; j <= 16; j++) {
-            if (j <= 8) {     // This is the main beams
+            if (j <= 8) { // This is the main beams
                 for (int i = 1; i <= ConfigHandler.rangeConeFloodlight; i++) {
                     // for 1st light:
                     if (i == 1) {
@@ -394,7 +394,11 @@ public class TileEntityMetaFloodlight extends TileEntityFL implements ISidedInve
                             c -= i / 2;
                             break;
                     }
-                    int[] rotatedCoords = rotate(a, b, c, this.orientation); // rotate the coordinate to the correct spot in the real world :)
+                    int[] rotatedCoords = rotate(
+                            a,
+                            b,
+                            c,
+                            this.orientation); // rotate the coordinate to the correct spot in the real world :)
                     int x = this.xCoord + rotatedCoords[0];
                     int y = this.yCoord + rotatedCoords[1];
                     int z = this.zCoord + rotatedCoords[2];
@@ -409,7 +413,7 @@ public class TileEntityMetaFloodlight extends TileEntityFL implements ISidedInve
                         TileEntityPhantomLight light = (TileEntityPhantomLight) worldObj.getTileEntity(x, y, z);
                         light.addSource(this.xCoord, this.yCoord, this.zCoord);
                     } else if (worldObj.getBlock(x, y, z).isOpaqueCube()) {
-                        if (i < 8) {   //This is for canceling the long rangs beams
+                        if (i < 8) { // This is for canceling the long rangs beams
                             failedBeams[j] = true;
                         }
                         break;
@@ -471,5 +475,4 @@ public class TileEntityMetaFloodlight extends TileEntityFL implements ISidedInve
             }
         }
     }
-
 }

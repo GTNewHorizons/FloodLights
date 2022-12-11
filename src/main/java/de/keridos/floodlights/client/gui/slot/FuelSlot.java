@@ -1,10 +1,10 @@
 package de.keridos.floodlights.client.gui.slot;
 
+import static de.keridos.floodlights.util.GeneralUtil.getBurnTime;
+
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-
-import static de.keridos.floodlights.util.GeneralUtil.getBurnTime;
 
 /**
  * Created by Keridos on 20.04.2015.

@@ -1,5 +1,8 @@
 package de.keridos.floodlights.tileentity;
 
+import static de.keridos.floodlights.util.GeneralUtil.getBurnTime;
+import static de.keridos.floodlights.util.GeneralUtil.safeLocalize;
+
 import de.keridos.floodlights.handler.ConfigHandler;
 import de.keridos.floodlights.reference.Names;
 import net.minecraft.entity.player.EntityPlayer;
@@ -9,9 +12,6 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
-
-import static de.keridos.floodlights.util.GeneralUtil.getBurnTime;
-import static de.keridos.floodlights.util.GeneralUtil.safeLocalize;
 
 /**
  * Created by Keridos on 09/10/2014.
@@ -80,19 +80,33 @@ public class TileEntityCarbonFloodlight extends TileEntityMetaFloodlight {
                 if (update) {
                     removeSource(this.mode);
                     addSource(this.mode);
-                    world.setBlockMetadataWithNotify(this.xCoord, this.yCoord, this.zCoord, this.getOrientation().ordinal() + 6, 2);
+                    world.setBlockMetadataWithNotify(
+                            this.xCoord,
+                            this.yCoord,
+                            this.zCoord,
+                            this.getOrientation().ordinal() + 6,
+                            2);
                     update = false;
                 } else if (!wasActive) {
                     addSource(this.mode);
-                    world.setBlockMetadataWithNotify(this.xCoord, this.yCoord, this.zCoord, world.getBlockMetadata(this.xCoord, this.yCoord, this.zCoord) + 6, 2);
-
+                    world.setBlockMetadataWithNotify(
+                            this.xCoord,
+                            this.yCoord,
+                            this.zCoord,
+                            world.getBlockMetadata(this.xCoord, this.yCoord, this.zCoord) + 6,
+                            2);
                 }
                 timeRemaining--;
                 wasActive = true;
             } else {
                 if (wasActive) {
                     removeSource(this.mode);
-                    world.setBlockMetadataWithNotify(this.xCoord, this.yCoord, this.zCoord, world.getBlockMetadata(this.xCoord, this.yCoord, this.zCoord) - 6, 2);
+                    world.setBlockMetadataWithNotify(
+                            this.xCoord,
+                            this.yCoord,
+                            this.zCoord,
+                            world.getBlockMetadata(this.xCoord, this.yCoord, this.zCoord) - 6,
+                            2);
                     wasActive = false;
                     timeout = ConfigHandler.timeoutFloodlights;
                     update = false;
@@ -141,8 +155,11 @@ public class TileEntityCarbonFloodlight extends TileEntityMetaFloodlight {
             if (active && timeRemaining > 0) {
                 addSource(this.mode);
             }
-            String modeString = (mode == 0 ? Names.Localizations.STRAIGHT : mode == 1 ? Names.Localizations.NARROW_CONE : Names.Localizations.WIDE_CONE);
-            player.addChatMessage(new ChatComponentText(safeLocalize(Names.Localizations.MODE) + ": " + safeLocalize(modeString)));
+            String modeString = (mode == 0
+                    ? Names.Localizations.STRAIGHT
+                    : mode == 1 ? Names.Localizations.NARROW_CONE : Names.Localizations.WIDE_CONE);
+            player.addChatMessage(
+                    new ChatComponentText(safeLocalize(Names.Localizations.MODE) + ": " + safeLocalize(modeString)));
         }
     }
 }

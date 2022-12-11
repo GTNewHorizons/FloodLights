@@ -9,7 +9,7 @@ public class RenderUtil {
     public static float[] g = new float[16];
     public static float[] b = new float[16];
 
-    public static void setupColors() {   // 0-15 minecraft colors;
+    public static void setupColors() { // 0-15 minecraft colors;
         for (int i = 0; i < 16; i++) {
             switch (i) {
                 case 0:

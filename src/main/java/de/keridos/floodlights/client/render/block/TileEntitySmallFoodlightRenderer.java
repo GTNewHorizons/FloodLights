@@ -17,7 +17,7 @@ import org.lwjgl.opengl.GL11;
  */
 public class TileEntitySmallFoodlightRenderer extends TileEntitySpecialRenderer {
 
-    //The model of your block
+    // The model of your block
     private final TileEntitySmallFluorescentLightModel modelSmallFluorescent;
     private final TileEntitySquareFluorescentLightModel modelSquareFluorescent;
 
@@ -32,10 +32,10 @@ public class TileEntitySmallFoodlightRenderer extends TileEntitySpecialRenderer 
         ResourceLocation textures;
         TileEntitySmallFloodlight tileEntitySmallFloodlight = (TileEntitySmallFloodlight) te;
         int metadata = te.getBlockMetadata();
-        //The PushMatrix tells the renderer to "start" doing something.
+        // The PushMatrix tells the renderer to "start" doing something.
         GL11.glPushMatrix();
 
-        //This is setting the initial location.
+        // This is setting the initial location.
         GL11.glTranslatef((float) x + 0.5F, (float) y + 1.5F, (float) z + 0.5F);
         switch (metadata) {
             case 0:
@@ -56,11 +56,12 @@ public class TileEntitySmallFoodlightRenderer extends TileEntitySpecialRenderer 
                 break;
         }
 
-        //This rotation part is very important! Without it, your modelSmallFluorescent will render upside-down! And for some reason you DO need PushMatrix again!
+        // This rotation part is very important! Without it, your modelSmallFluorescent will render upside-down! And for
+        // some reason you DO need PushMatrix again!
         GL11.glPushMatrix();
 
         GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-        //A reference to your Model file. Again, very important.
+        // A reference to your Model file. Again, very important.
         float xRotation = 0.0F;
         float yRotation = 0.0F;
         float zRotation = 0.0F;
@@ -96,17 +97,18 @@ public class TileEntitySmallFoodlightRenderer extends TileEntitySpecialRenderer 
         }
         switch (metadata) {
             case 0:
-                this.modelSmallFluorescent.setRotateAngle(this.modelSmallFluorescent.shape1, xRotation, yRotation, zRotation);
+                this.modelSmallFluorescent.setRotateAngle(
+                        this.modelSmallFluorescent.shape1, xRotation, yRotation, zRotation);
                 this.modelSmallFluorescent.render(null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
                 break;
             case 1:
-                this.modelSquareFluorescent.setRotateAngle(this.modelSquareFluorescent.shape1, xRotation, yRotation, zRotation);
+                this.modelSquareFluorescent.setRotateAngle(
+                        this.modelSquareFluorescent.shape1, xRotation, yRotation, zRotation);
                 this.modelSquareFluorescent.render(null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
                 break;
         }
-        //Tell it to stop rendering for both the PushMatrix's
+        // Tell it to stop rendering for both the PushMatrix's
         GL11.glPopMatrix();
         GL11.glPopMatrix();
     }
 }
-

@@ -1,5 +1,7 @@
 package de.keridos.floodlights.block;
 
+import static de.keridos.floodlights.util.GeneralUtil.safeLocalize;
+
 import buildcraft.api.tools.IToolWrench;
 import cofh.api.item.IToolHammer;
 import cpw.mods.fml.relauncher.Side;
@@ -13,6 +15,8 @@ import de.keridos.floodlights.tileentity.TileEntityFL;
 import de.keridos.floodlights.tileentity.TileEntityMetaFloodlight;
 import de.keridos.floodlights.tileentity.TileEntitySmallFloodlight;
 import de.keridos.floodlights.util.MathUtil;
+import java.util.ArrayList;
+import java.util.List;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -31,11 +35,6 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static de.keridos.floodlights.util.GeneralUtil.safeLocalize;
 
 /**
  * Created by Keridos on 01.10.14.
@@ -58,11 +57,9 @@ public class BlockSmallElectricFloodlight extends BlockFL implements ITileEntity
         return false;
     }
 
-
     @Override
     @SideOnly(Side.CLIENT)
-    public void registerBlockIcons(IIconRegister iconRegister) {
-    }
+    public void registerBlockIcons(IIconRegister iconRegister) {}
 
     @Override
     public boolean isOpaqueCube() {
@@ -95,11 +92,23 @@ public class BlockSmallElectricFloodlight extends BlockFL implements ITileEntity
     }
 
     @Override
-    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float p_149727_7_, float p_149727_8_, float p_149727_9_) {
+    public boolean onBlockActivated(
+            World world,
+            int x,
+            int y,
+            int z,
+            EntityPlayer player,
+            int side,
+            float p_149727_7_,
+            float p_149727_8_,
+            float p_149727_9_) {
         if (!world.isRemote && player.getHeldItem() == null && player.isSneaking()) {
             ((TileEntitySmallFloodlight) world.getTileEntity(x, y, z)).toggleInverted();
-            String invert = (((TileEntitySmallFloodlight) world.getTileEntity(x, y, z)).getInverted() ? Names.Localizations.TRUE : Names.Localizations.FALSE);
-            player.addChatMessage(new ChatComponentText(safeLocalize(Names.Localizations.INVERT) + ": " + safeLocalize(invert)));
+            String invert = (((TileEntitySmallFloodlight) world.getTileEntity(x, y, z)).getInverted()
+                    ? Names.Localizations.TRUE
+                    : Names.Localizations.FALSE);
+            player.addChatMessage(
+                    new ChatComponentText(safeLocalize(Names.Localizations.INVERT) + ": " + safeLocalize(invert)));
             return true;
         } else if (!world.isRemote && player.getHeldItem() != null) {
             if (ModCompatibility.BCLoaded) {
@@ -130,14 +139,16 @@ public class BlockSmallElectricFloodlight extends BlockFL implements ITileEntity
                 }
             }
             if (ModCompatibility.IC2Loaded) {
-                if (player.isSneaking() && player.getHeldItem().getItem().getUnlocalizedName().equals("ic2.itemToolWrench")) {
+                if (player.isSneaking()
+                        && player.getHeldItem().getItem().getUnlocalizedName().equals("ic2.itemToolWrench")) {
                     world.func_147480_a(x, y, z, true);
                     return true;
                 } else if (player.getHeldItem().getItem().getUnlocalizedName().equals("ic2.itemToolWrench")) {
                     ((TileEntitySmallFloodlight) world.getTileEntity(x, y, z)).toggleRotationState();
                     return true;
                 }
-                if (player.isSneaking() && player.getHeldItem().getItem().getUnlocalizedName().equals("ic2.itemToolWrenchElectric")) {
+                if (player.isSneaking()
+                        && player.getHeldItem().getItem().getUnlocalizedName().equals("ic2.itemToolWrenchElectric")) {
                     world.func_147480_a(x, y, z, true);
                     return true;
                 } else if (player.getHeldItem().getItem().getUnlocalizedName().equals("ic2.itemToolWrenchElectric")) {
@@ -146,7 +157,8 @@ public class BlockSmallElectricFloodlight extends BlockFL implements ITileEntity
                 }
             }
             if (player.getHeldItem().getItem() == Items.dye) {
-                ((TileEntityFL) world.getTileEntity(x, y, z)).setColor(15 - player.getHeldItem().getItemDamage());
+                ((TileEntityFL) world.getTileEntity(x, y, z))
+                        .setColor(15 - player.getHeldItem().getItemDamage());
                 return true;
             } else if (player.getHeldItem().getItem() == Item.getItemFromBlock(Blocks.wool) && !player.isSneaking()) {
                 ((TileEntityFL) world.getTileEntity(x, y, z)).setColor(16);
@@ -221,7 +233,13 @@ public class BlockSmallElectricFloodlight extends BlockFL implements ITileEntity
         maxX = newMax[0] + 0.5;
         maxY = newMax[1] + 0.5;
         maxZ = newMax[2] + 0.5;
-        return AxisAlignedBB.getBoundingBox((double) x + minX, (double) y + minY, (double) z + minZ, (double) x + maxX, (double) y + maxY, (double) z + maxZ);
+        return AxisAlignedBB.getBoundingBox(
+                (double) x + minX,
+                (double) y + minY,
+                (double) z + minZ,
+                (double) x + maxX,
+                (double) y + maxY,
+                (double) z + maxZ);
     }
 
     @Override
@@ -242,7 +260,8 @@ public class BlockSmallElectricFloodlight extends BlockFL implements ITileEntity
     }
 
     @Override
-    public MovingObjectPosition collisionRayTrace(World world, int x, int y, int z, Vec3 p_149731_5_, Vec3 p_149731_6_) {
+    public MovingObjectPosition collisionRayTrace(
+            World world, int x, int y, int z, Vec3 p_149731_5_, Vec3 p_149731_6_) {
         this.setBlockBoundsBasedOnState(world, x, y, z);
         return super.collisionRayTrace(world, x, y, z, p_149731_5_, p_149731_6_);
     }
@@ -259,7 +278,8 @@ public class BlockSmallElectricFloodlight extends BlockFL implements ITileEntity
             if (itemStack.hasDisplayName()) {
                 ((TileEntityFL) world.getTileEntity(x, y, z)).setCustomName(itemStack.getDisplayName());
             }
-            ((TileEntityFL) world.getTileEntity(x, y, z)).setOrientation(ForgeDirection.getOrientation(getFacing(entityLiving)));
+            ((TileEntityFL) world.getTileEntity(x, y, z))
+                    .setOrientation(ForgeDirection.getOrientation(getFacing(entityLiving)));
         }
     }
 

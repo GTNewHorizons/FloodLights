@@ -19,8 +19,7 @@ public class MessageTileEntityFL implements IMessage {
     public boolean rotationState, wasActive;
     public String customName, owner;
 
-    public MessageTileEntityFL() {
-    }
+    public MessageTileEntityFL() {}
 
     public static class MessageHandlerTileEntityFL implements IMessageHandler<MessageTileEntityFL, IMessage> {
         @Override
@@ -121,6 +120,8 @@ public class MessageTileEntityFL implements IMessage {
 
     @Override
     public String toString() {
-        return String.format("MessageTileEntityFL - x:%s, y:%s, z:%s, timeRemaining:%s, orientation:%s, state:%s, customName:%s, owner:%s", x, y, z, timeRemaining, orientation, state, customName, owner);
+        return String.format(
+                "MessageTileEntityFL - x:%s, y:%s, z:%s, timeRemaining:%s, orientation:%s, state:%s, customName:%s, owner:%s",
+                x, y, z, timeRemaining, orientation, state, customName, owner);
     }
 }

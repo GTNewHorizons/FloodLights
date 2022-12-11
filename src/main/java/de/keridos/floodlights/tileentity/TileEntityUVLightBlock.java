@@ -1,12 +1,11 @@
 package de.keridos.floodlights.tileentity;
 
 import de.keridos.floodlights.handler.ConfigHandler;
+import java.util.List;
+import java.util.ListIterator;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
-
-import java.util.List;
-import java.util.ListIterator;
 
 /**
  * Created by Keridos on 15/09/2015.
@@ -35,7 +34,8 @@ public class TileEntityUVLightBlock extends TileEntityPhantomLight {
             List<EntityLivingBase> entityList = worldObj.getEntitiesWithinAABB(EntityLivingBase.class, axisAlignedBB);
             ListIterator iterator = entityList.listIterator();
             while (iterator.hasNext()) {
-                ((EntityLivingBase) iterator.next()).attackEntityFrom(DamageSource.cactus, ConfigHandler.damageUVFloodlight);
+                ((EntityLivingBase) iterator.next())
+                        .attackEntityFrom(DamageSource.cactus, ConfigHandler.damageUVFloodlight);
             }
         }
         super.updateEntity();

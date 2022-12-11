@@ -1,11 +1,14 @@
 package de.keridos.floodlights.compatability;
 
+import static de.keridos.floodlights.util.GeneralUtil.safeLocalize;
+
 import cpw.mods.fml.common.Optional;
 import de.keridos.floodlights.reference.Names;
 import de.keridos.floodlights.tileentity.TileEntityCarbonFloodlight;
 import de.keridos.floodlights.tileentity.TileEntityElectricFloodlight;
 import de.keridos.floodlights.tileentity.TileEntityFL;
 import de.keridos.floodlights.tileentity.TileEntityGrowLight;
+import java.util.List;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;
@@ -15,10 +18,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-
-import java.util.List;
-
-import static de.keridos.floodlights.util.GeneralUtil.safeLocalize;
 
 /**
  * Created by Keridos on 20.04.2015.
@@ -69,7 +68,8 @@ public class WailaTileHandler implements IWailaDataProvider {
      */
     @Override
     @Optional.Method(modid = "Waila")
-    public List<String> getWailaHead(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+    public List<String> getWailaHead(
+            ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
 
         return currenttip;
     }
@@ -81,13 +81,18 @@ public class WailaTileHandler implements IWailaDataProvider {
      */
     @Override
     @Optional.Method(modid = "Waila")
-    public List<String> getWailaBody(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+    public List<String> getWailaBody(
+            ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
         boolean invert = accessor.getNBTData().getBoolean("inverted");
         int mode = accessor.getNBTData().getInteger("teState");
         String inverted = (invert ? Names.Localizations.TRUE : Names.Localizations.FALSE);
         currenttip.add(safeLocalize(Names.Localizations.INVERT) + ": " + safeLocalize(inverted));
-        if (mode < 3 && (accessor.getTileEntity() instanceof TileEntityElectricFloodlight || accessor.getTileEntity() instanceof TileEntityCarbonFloodlight)) {
-            String modeString = (mode == 0 ? Names.Localizations.STRAIGHT : mode == 1 ? Names.Localizations.NARROW_CONE : Names.Localizations.WIDE_CONE);
+        if (mode < 3
+                && (accessor.getTileEntity() instanceof TileEntityElectricFloodlight
+                        || accessor.getTileEntity() instanceof TileEntityCarbonFloodlight)) {
+            String modeString = (mode == 0
+                    ? Names.Localizations.STRAIGHT
+                    : mode == 1 ? Names.Localizations.NARROW_CONE : Names.Localizations.WIDE_CONE);
             currenttip.add(safeLocalize(Names.Localizations.MODE) + ": " + safeLocalize(modeString));
         }
         if (mode < 2 && accessor.getTileEntity() instanceof TileEntityGrowLight) {
@@ -104,7 +109,8 @@ public class WailaTileHandler implements IWailaDataProvider {
      */
     @Override
     @Optional.Method(modid = "Waila")
-    public List<String> getWailaTail(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+    public List<String> getWailaTail(
+            ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
 
         return currenttip;
     }
@@ -115,14 +121,12 @@ public class WailaTileHandler implements IWailaDataProvider {
      * can simply use te.writeToNBT(tag) to take advantage of the built in nbt save function for tile
      * entities.
      */
-
     @Override
-    public NBTTagCompound getNBTData(EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, int x, int y, int z) {
+    public NBTTagCompound getNBTData(
+            EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, int x, int y, int z) {
 
-        if (te != null)
-            te.writeToNBT(tag);
+        if (te != null) te.writeToNBT(tag);
 
         return tag;
     }
 }
-
