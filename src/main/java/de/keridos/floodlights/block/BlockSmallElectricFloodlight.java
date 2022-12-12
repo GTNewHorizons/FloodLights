@@ -93,15 +93,7 @@ public class BlockSmallElectricFloodlight extends BlockFL implements ITileEntity
 
     @Override
     public boolean onBlockActivated(
-            World world,
-            int x,
-            int y,
-            int z,
-            EntityPlayer player,
-            int side,
-            float p_149727_7_,
-            float p_149727_8_,
-            float p_149727_9_) {
+            World world, int x, int y, int z, EntityPlayer player, int side, float subX, float subY, float subZ) {
         if (!world.isRemote && player.getHeldItem() == null && player.isSneaking()) {
             ((TileEntitySmallFloodlight) world.getTileEntity(x, y, z)).toggleInverted();
             String invert = (((TileEntitySmallFloodlight) world.getTileEntity(x, y, z)).getInverted()
@@ -260,10 +252,9 @@ public class BlockSmallElectricFloodlight extends BlockFL implements ITileEntity
     }
 
     @Override
-    public MovingObjectPosition collisionRayTrace(
-            World world, int x, int y, int z, Vec3 p_149731_5_, Vec3 p_149731_6_) {
+    public MovingObjectPosition collisionRayTrace(World world, int x, int y, int z, Vec3 startVec, Vec3 endVec) {
         this.setBlockBoundsBasedOnState(world, x, y, z);
-        return super.collisionRayTrace(world, x, y, z, p_149731_5_, p_149731_6_);
+        return super.collisionRayTrace(world, x, y, z, startVec, endVec);
     }
 
     @Override

@@ -21,10 +21,7 @@ import net.minecraftforge.common.util.ForgeDirection;
  * Created by Keridos on 04.05.2015.
  * This Class
  */
-@Optional.InterfaceList({
-    @Optional.Interface(iface = "ic2.api.energy.tile.IEnergySink", modid = "IC2"),
-    @Optional.Interface(iface = "gregtech.api.interfaces.tileentity.IEnergyConnected", modid = "GregTech")
-})
+@Optional.Interface(iface = "ic2.api.energy.tile.IEnergySink", modid = "IC2")
 public class TileEntityFLElectric extends TileEntityMetaFloodlight implements IEnergyHandler, IEnergySink {
     protected boolean wasAddedToEnergyNet;
     protected double storageEU;

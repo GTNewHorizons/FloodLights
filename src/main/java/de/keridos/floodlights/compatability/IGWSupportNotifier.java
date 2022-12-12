@@ -7,7 +7,7 @@ import cpw.mods.fml.common.ModContainer;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
 import cpw.mods.fml.relauncher.Side;
-import java.awt.*;
+import java.awt.Desktop;
 import java.io.File;
 import java.net.URL;
 import java.net.URLConnection;
@@ -86,12 +86,12 @@ public class IGWSupportNotifier {
         }
 
         @Override
-        public String getCommandUsage(ICommandSender p_71518_1_) {
+        public String getCommandUsage(ICommandSender sender) {
             return getCommandName();
         }
 
         @Override
-        public void processCommand(ICommandSender p_71515_1_, String[] p_71515_2_) {
+        public void processCommand(ICommandSender sender, String[] args) {
             new ThreadDownloadIGW();
         }
     }

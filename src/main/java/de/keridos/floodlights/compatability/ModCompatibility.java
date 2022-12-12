@@ -3,8 +3,8 @@ package de.keridos.floodlights.compatability;
 import static codechicken.nei.api.API.hideItem;
 
 import com.InfinityRaider.AgriCraft.api.API;
-import com.InfinityRaider.AgriCraft.api.v2.APIv2;
-import com.InfinityRaider.AgriCraft.api.v2.ICrop;
+import com.InfinityRaider.AgriCraft.api.v3.APIv3;
+import com.InfinityRaider.AgriCraft.api.v3.ICrop;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.ModAPIManager;
 import cpw.mods.fml.common.Optional;
@@ -89,10 +89,10 @@ public class ModCompatibility {
     @Optional.Method(modid = "AgriCraft")
     public boolean isBlockValidAgriCraftSeed(Block block, World world, BlockPos blockPos) {
         if (block instanceof ICrop
-                && ((APIv2) API.getAPI(2))
+                && ((APIv3) API.getAPI(3))
                         .getCrop(world, blockPos.posX, blockPos.posY, blockPos.posZ)
                         .hasPlant()
-                && ((APIv2) API.getAPI(2))
+                && ((APIv3) API.getAPI(3))
                         .getCrop(world, blockPos.posX, blockPos.posY, blockPos.posZ)
                         .getPlant()
                         .getGrowthRequirement()

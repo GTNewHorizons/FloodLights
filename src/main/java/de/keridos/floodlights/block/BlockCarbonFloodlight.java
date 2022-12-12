@@ -71,15 +71,7 @@ public class BlockCarbonFloodlight extends BlockFL implements ITileEntityProvide
 
     @Override
     public boolean onBlockActivated(
-            World world,
-            int x,
-            int y,
-            int z,
-            EntityPlayer player,
-            int side,
-            float p_149727_7_,
-            float p_149727_8_,
-            float p_149727_9_) {
+            World world, int x, int y, int z, EntityPlayer player, int side, float subX, float subY, float subZ) {
         if (!world.isRemote && player.getHeldItem() == null && player.isSneaking()) {
             ((TileEntityCarbonFloodlight) world.getTileEntity(x, y, z)).toggleInverted();
             String invert = (((TileEntityCarbonFloodlight) world.getTileEntity(x, y, z)).getInverted()

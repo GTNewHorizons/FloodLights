@@ -1,11 +1,23 @@
 package de.keridos.floodlights.init;
 
 import cpw.mods.fml.common.registry.GameRegistry;
-import de.keridos.floodlights.block.*;
+import de.keridos.floodlights.block.BlockCarbonFloodlight;
+import de.keridos.floodlights.block.BlockElectricFloodlight;
+import de.keridos.floodlights.block.BlockGrowLight;
+import de.keridos.floodlights.block.BlockPhantomLight;
+import de.keridos.floodlights.block.BlockSmallElectricFloodlight;
+import de.keridos.floodlights.block.BlockUVLight;
+import de.keridos.floodlights.block.BlockUVLightBlock;
 import de.keridos.floodlights.item.itemBlock.ItemBlockSmallElectricMetaBlock;
 import de.keridos.floodlights.reference.Names;
 import de.keridos.floodlights.reference.Reference;
-import de.keridos.floodlights.tileentity.*;
+import de.keridos.floodlights.tileentity.TileEntityCarbonFloodlight;
+import de.keridos.floodlights.tileentity.TileEntityElectricFloodlight;
+import de.keridos.floodlights.tileentity.TileEntityGrowLight;
+import de.keridos.floodlights.tileentity.TileEntityPhantomLight;
+import de.keridos.floodlights.tileentity.TileEntitySmallFloodlight;
+import de.keridos.floodlights.tileentity.TileEntityUVLight;
+import de.keridos.floodlights.tileentity.TileEntityUVLightBlock;
 import net.minecraft.block.Block;
 
 /**
