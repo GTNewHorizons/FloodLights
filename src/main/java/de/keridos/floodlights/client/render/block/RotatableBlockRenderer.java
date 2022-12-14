@@ -28,33 +28,40 @@ public class RotatableBlockRenderer implements ISimpleBlockRenderingHandler {
         GL11.glTranslated(-0.5, -0.5, -0.5);
         t.startDrawingQuads();
         t.setNormal(-1, 0, 0);
-        renderer.renderFaceXNeg(block, 0, 0, 0, renderer.getBlockIconFromSideAndMetadata(block, ForgeDirection.WEST.ordinal(), 1));
+        renderer.renderFaceXNeg(
+                block, 0, 0, 0, renderer.getBlockIconFromSideAndMetadata(block, ForgeDirection.WEST.ordinal(), 1));
         t.draw();
         t.startDrawingQuads();
         t.setNormal(1, 0, 0);
-        renderer.renderFaceXPos(block, 0, 0, 0, renderer.getBlockIconFromSideAndMetadata(block, ForgeDirection.EAST.ordinal(), 1));
+        renderer.renderFaceXPos(
+                block, 0, 0, 0, renderer.getBlockIconFromSideAndMetadata(block, ForgeDirection.EAST.ordinal(), 1));
         t.draw();
         t.startDrawingQuads();
         t.setNormal(0, 0, -1);
-        renderer.renderFaceZNeg(block, 0, 0, 0, renderer.getBlockIconFromSideAndMetadata(block, ForgeDirection.NORTH.ordinal(), 1));
+        renderer.renderFaceZNeg(
+                block, 0, 0, 0, renderer.getBlockIconFromSideAndMetadata(block, ForgeDirection.NORTH.ordinal(), 1));
         t.draw();
         t.startDrawingQuads();
         t.setNormal(0, 0, 1);
-        renderer.renderFaceZPos(block, 0, 0, 0, renderer.getBlockIconFromSideAndMetadata(block, ForgeDirection.SOUTH.ordinal(), 1));
+        renderer.renderFaceZPos(
+                block, 0, 0, 0, renderer.getBlockIconFromSideAndMetadata(block, ForgeDirection.SOUTH.ordinal(), 1));
         t.draw();
         t.startDrawingQuads();
         t.setNormal(0, -1, 0);
-        renderer.renderFaceYNeg(block, 0, 0, 0, renderer.getBlockIconFromSideAndMetadata(block, ForgeDirection.DOWN.ordinal(), 1));
+        renderer.renderFaceYNeg(
+                block, 0, 0, 0, renderer.getBlockIconFromSideAndMetadata(block, ForgeDirection.DOWN.ordinal(), 1));
         t.draw();
         t.startDrawingQuads();
         t.setNormal(0, 1, 0);
-        renderer.renderFaceYPos(block, 0, 0, 0, renderer.getBlockIconFromSideAndMetadata(block, ForgeDirection.UP.ordinal(), 1));
+        renderer.renderFaceYPos(
+                block, 0, 0, 0, renderer.getBlockIconFromSideAndMetadata(block, ForgeDirection.UP.ordinal(), 1));
         t.draw();
         GL11.glPopMatrix();
     }
 
     @Override
-    public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer) {
+    public boolean renderWorldBlock(
+            IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer) {
         TileEntityFL l = (TileEntityFL) world.getTileEntity(x, y, z);
         int i1 = l.getOrientation().ordinal();
         int c = l.getColor();
@@ -100,7 +107,8 @@ public class RotatableBlockRenderer implements ISimpleBlockRenderingHandler {
             } else if (block == ModBlocks.blockUVLight) {
                 cMult = 1.273F; // 1.0F + (float) Math.log10(255 / 137);
             }
-            renderer.renderStandardBlockWithColorMultiplier(block, x, y, z, RenderUtil.r[c] * cMult, RenderUtil.g[c] * cMult, RenderUtil.b[c] * cMult);
+            renderer.renderStandardBlockWithColorMultiplier(
+                    block, x, y, z, RenderUtil.r[c] * cMult, RenderUtil.g[c] * cMult, RenderUtil.b[c] * cMult);
         }
         renderer.uvRotateEast = 0;
         renderer.uvRotateWest = 0;
@@ -121,4 +129,3 @@ public class RotatableBlockRenderer implements ISimpleBlockRenderingHandler {
         return RenderIDs.ROTATABLE_BLOCK;
     }
 }
-

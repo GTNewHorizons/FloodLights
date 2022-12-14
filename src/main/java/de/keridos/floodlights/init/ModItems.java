@@ -1,7 +1,14 @@
 package de.keridos.floodlights.init;
 
 import cpw.mods.fml.common.registry.GameRegistry;
-import de.keridos.floodlights.item.*;
+import de.keridos.floodlights.item.ItemCarbonDissolver;
+import de.keridos.floodlights.item.ItemCarbonLantern;
+import de.keridos.floodlights.item.ItemFL;
+import de.keridos.floodlights.item.ItemGlowingFilament;
+import de.keridos.floodlights.item.ItemLightBulb;
+import de.keridos.floodlights.item.ItemLightDebugTool;
+import de.keridos.floodlights.item.ItemMantle;
+import de.keridos.floodlights.item.ItemRawFilament;
 import de.keridos.floodlights.reference.Names;
 
 /**

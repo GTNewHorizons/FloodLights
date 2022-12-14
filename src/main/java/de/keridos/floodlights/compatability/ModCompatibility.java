@@ -1,8 +1,10 @@
 package de.keridos.floodlights.compatability;
 
+import static codechicken.nei.api.API.hideItem;
+
 import com.InfinityRaider.AgriCraft.api.API;
-import com.InfinityRaider.AgriCraft.api.v2.APIv2;
-import com.InfinityRaider.AgriCraft.api.v2.ICrop;
+import com.InfinityRaider.AgriCraft.api.v3.APIv3;
+import com.InfinityRaider.AgriCraft.api.v3.ICrop;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.ModAPIManager;
 import cpw.mods.fml.common.Optional;
@@ -15,8 +17,6 @@ import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
-
-import static codechicken.nei.api.API.hideItem;
 
 /**
  * Created by Keridos on 28.02.14.
@@ -37,8 +37,7 @@ public class ModCompatibility {
     public static boolean ColoredLightCoreLoaded = false;
     public static boolean ACLoaded = false;
 
-    private ModCompatibility() {
-    }
+    private ModCompatibility() {}
 
     public static ModCompatibility getInstance() {
         if (instance == null) {
@@ -82,13 +81,22 @@ public class ModCompatibility {
             hideNEIItems();
         }
         addVersionCheckerInfo();
-        FMLInterModComms.sendMessage("Waila", "register", "de.keridos.floodlights.compatability.WailaTileHandler.callbackRegister");
+        FMLInterModComms.sendMessage(
+                "Waila", "register", "de.keridos.floodlights.compatability.WailaTileHandler.callbackRegister");
         WrenchAvailable = (BCLoaded || EnderIOLoaded || IC2Loaded || CofhCoreLoaded);
     }
 
     @Optional.Method(modid = "AgriCraft")
     public boolean isBlockValidAgriCraftSeed(Block block, World world, BlockPos blockPos) {
-        if (block instanceof ICrop && ((APIv2) API.getAPI(2)).getCrop(world, blockPos.posX, blockPos.posY, blockPos.posZ).hasPlant() && ((APIv2) API.getAPI(2)).getCrop(world, blockPos.posX, blockPos.posY, blockPos.posZ).getPlant().getGrowthRequirement().canGrow(world, blockPos.posX, blockPos.posY, blockPos.posZ)) {
+        if (block instanceof ICrop
+                && ((APIv3) API.getAPI(3))
+                        .getCrop(world, blockPos.posX, blockPos.posY, blockPos.posZ)
+                        .hasPlant()
+                && ((APIv3) API.getAPI(3))
+                        .getCrop(world, blockPos.posX, blockPos.posY, blockPos.posZ)
+                        .getPlant()
+                        .getGrowthRequirement()
+                        .canGrow(world, blockPos.posX, blockPos.posY, blockPos.posZ)) {
             return true;
         }
         return false;

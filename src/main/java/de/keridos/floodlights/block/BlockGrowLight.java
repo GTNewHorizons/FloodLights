@@ -1,5 +1,7 @@
 package de.keridos.floodlights.block;
 
+import static de.keridos.floodlights.util.GeneralUtil.safeLocalize;
+
 import buildcraft.api.tools.IToolWrench;
 import cofh.api.item.IToolHammer;
 import cpw.mods.fml.relauncher.Side;
@@ -27,8 +29,6 @@ import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
-import static de.keridos.floodlights.util.GeneralUtil.safeLocalize;
-
 /**
  * Created by Keridos on 01.10.14.
  * This Class defines the block properties of the electric floodlight.
@@ -50,11 +50,9 @@ public class BlockGrowLight extends BlockFL implements ITileEntityProvider {
         return false;
     }
 
-
     @Override
     @SideOnly(Side.CLIENT)
-    public void registerBlockIcons(IIconRegister iconRegister) {
-    }
+    public void registerBlockIcons(IIconRegister iconRegister) {}
 
     @Override
     public boolean isOpaqueCube() {
@@ -87,11 +85,15 @@ public class BlockGrowLight extends BlockFL implements ITileEntityProvider {
     }
 
     @Override
-    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float p_149727_7_, float p_149727_8_, float p_149727_9_) {
+    public boolean onBlockActivated(
+            World world, int x, int y, int z, EntityPlayer player, int side, float subX, float subY, float subZ) {
         if (!world.isRemote && player.getHeldItem() == null && player.isSneaking()) {
             ((TileEntityMetaFloodlight) world.getTileEntity(x, y, z)).toggleInverted();
-            String invert = (((TileEntityMetaFloodlight) world.getTileEntity(x, y, z)).getInverted() ? Names.Localizations.TRUE : Names.Localizations.FALSE);
-            player.addChatMessage(new ChatComponentText(safeLocalize(Names.Localizations.INVERT) + ": " + safeLocalize(invert)));
+            String invert = (((TileEntityMetaFloodlight) world.getTileEntity(x, y, z)).getInverted()
+                    ? Names.Localizations.TRUE
+                    : Names.Localizations.FALSE);
+            player.addChatMessage(
+                    new ChatComponentText(safeLocalize(Names.Localizations.INVERT) + ": " + safeLocalize(invert)));
             return true;
         } else if (!world.isRemote && player.getHeldItem() != null) {
             if (ModCompatibility.BCLoaded) {
@@ -125,19 +127,28 @@ public class BlockGrowLight extends BlockFL implements ITileEntityProvider {
                 }
             }
             if (ModCompatibility.IC2Loaded) {
-                if (player.isSneaking() && (player.getHeldItem().getItem().getUnlocalizedName().equals("ic2.itemToolWrenchElectric")
-                        || player.getHeldItem().getItem().getUnlocalizedName().equals("ic2.itemToolWrench"))) {
+                if (player.isSneaking()
+                        && (player.getHeldItem().getItem().getUnlocalizedName().equals("ic2.itemToolWrenchElectric")
+                                || player.getHeldItem()
+                                        .getItem()
+                                        .getUnlocalizedName()
+                                        .equals("ic2.itemToolWrench"))) {
                     world.func_147480_a(x, y, z, true);
                     return true;
                 }
-                if (!player.isSneaking() && (player.getHeldItem().getItem().getUnlocalizedName().equals("ic2.itemToolWrenchElectric")
-                        || player.getHeldItem().getItem().getUnlocalizedName().equals("ic2.itemToolWrench"))) {
+                if (!player.isSneaking()
+                        && (player.getHeldItem().getItem().getUnlocalizedName().equals("ic2.itemToolWrenchElectric")
+                                || player.getHeldItem()
+                                        .getItem()
+                                        .getUnlocalizedName()
+                                        .equals("ic2.itemToolWrench"))) {
                     ((TileEntityGrowLight) world.getTileEntity(x, y, z)).changeMode(player);
                     return true;
                 }
             }
             if (player.getHeldItem().getItem() == Items.dye) {
-                ((TileEntityFL) world.getTileEntity(x, y, z)).setColor(15 - player.getHeldItem().getItemDamage());
+                ((TileEntityFL) world.getTileEntity(x, y, z))
+                        .setColor(15 - player.getHeldItem().getItemDamage());
                 return true;
             } else if (player.getHeldItem().getItem() == Item.getItemFromBlock(Blocks.wool) && !player.isSneaking()) {
                 ((TileEntityFL) world.getTileEntity(x, y, z)).setColor(16);
@@ -160,7 +171,6 @@ public class BlockGrowLight extends BlockFL implements ITileEntityProvider {
     public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z) {
         return null;
     }
-
 
     //
     @Override
@@ -185,7 +195,13 @@ public class BlockGrowLight extends BlockFL implements ITileEntityProvider {
         this.maxY = newMax[1] + 0.5;
         this.maxZ = newMax[2] + 0.5;
 
-        return AxisAlignedBB.getBoundingBox((double) x + this.minX, (double) y + this.minY, (double) z + this.minZ, (double) x + this.maxX, (double) y + this.maxY, (double) z + this.maxZ);
+        return AxisAlignedBB.getBoundingBox(
+                (double) x + this.minX,
+                (double) y + this.minY,
+                (double) z + this.minZ,
+                (double) x + this.maxX,
+                (double) y + this.maxY,
+                (double) z + this.maxZ);
     }
 
     @Override

@@ -1,5 +1,7 @@
 package de.keridos.floodlights.tileentity;
 
+import static de.keridos.floodlights.util.GeneralUtil.isItemStackValidElectrical;
+
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyHandler;
 import cpw.mods.fml.common.Optional;
@@ -15,17 +17,11 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.ForgeDirection;
 
-import static de.keridos.floodlights.util.GeneralUtil.isItemStackValidElectrical;
-
 /**
  * Created by Keridos on 04.05.2015.
  * This Class
  */
-
-@Optional.InterfaceList({
-        @Optional.Interface(iface = "ic2.api.energy.tile.IEnergySink", modid = "IC2"),
-        @Optional.Interface(iface = "gregtech.api.interfaces.tileentity.IEnergyConnected", modid = "GregTech")})
-
+@Optional.Interface(iface = "ic2.api.energy.tile.IEnergySink", modid = "IC2")
 public class TileEntityFLElectric extends TileEntityMetaFloodlight implements IEnergyHandler, IEnergySink {
     protected boolean wasAddedToEnergyNet;
     protected double storageEU;
@@ -132,8 +128,7 @@ public class TileEntityFLElectric extends TileEntityMetaFloodlight implements IE
 
     @Override
     public void onChunkUnload() {
-        if (wasAddedToEnergyNet &&
-                ModCompatibility.IC2Loaded) {
+        if (wasAddedToEnergyNet && ModCompatibility.IC2Loaded) {
             removeFromIc2EnergyNetwork();
 
             wasAddedToEnergyNet = false;

@@ -9,10 +9,14 @@ public class Textures {
 
     public static final class Block {
         private static final String MODEL_TEXTURE_LOCATION = RESOURCE_PREFIX + "textures/blocks/";
-        public static final String SMALL_FLUORESCENT_FLOODLIGHT_TEXTURE_OFF = MODEL_TEXTURE_LOCATION + "fluorescentSmallLight_off.png";
-        public static final String SMALL_FLUORESCENT_FLOODLIGHT_TEXTURE_ON = MODEL_TEXTURE_LOCATION + "fluorescentSmallLight_on.png";
-        public static final String SQUARE_FLUORESCENT_FLOODLIGHT_TEXTURE_OFF = MODEL_TEXTURE_LOCATION + "fluorescentSquareLight_off.png";
-        public static final String SQUARE_FLUORESCENT_FLOODLIGHT_TEXTURE_ON = MODEL_TEXTURE_LOCATION + "fluorescentSquareLight_on.png";
+        public static final String SMALL_FLUORESCENT_FLOODLIGHT_TEXTURE_OFF =
+                MODEL_TEXTURE_LOCATION + "fluorescentSmallLight_off.png";
+        public static final String SMALL_FLUORESCENT_FLOODLIGHT_TEXTURE_ON =
+                MODEL_TEXTURE_LOCATION + "fluorescentSmallLight_on.png";
+        public static final String SQUARE_FLUORESCENT_FLOODLIGHT_TEXTURE_OFF =
+                MODEL_TEXTURE_LOCATION + "fluorescentSquareLight_off.png";
+        public static final String SQUARE_FLUORESCENT_FLOODLIGHT_TEXTURE_ON =
+                MODEL_TEXTURE_LOCATION + "fluorescentSquareLight_on.png";
         public static final String GROW_LIGHT_TEXTURE_ON = MODEL_TEXTURE_LOCATION + "growLight_on.png";
         public static final String GROW_LIGHT_TEXTURE_ON_LAMPS = MODEL_TEXTURE_LOCATION + "growLight_on_lamps.png";
         public static final String GROW_LIGHT_TEXTURE_OFF = MODEL_TEXTURE_LOCATION + "growLight_off.png";

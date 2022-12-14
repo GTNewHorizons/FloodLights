@@ -24,7 +24,6 @@ public class TileEntityPhantomLightRenderer extends TileEntitySpecialRenderer {
         double za = cube.minZ;
         double zb = cube.maxZ;
 
-
         Tessellator tessellator = Tessellator.instance;
         tessellator.startDrawing(GL11.GL_LINE_LOOP);
         tessellator.addVertex(xa, ya, za);
@@ -89,7 +88,5 @@ public class TileEntityPhantomLightRenderer extends TileEntitySpecialRenderer {
             GL11.glPopAttrib();
             GL11.glPopMatrix();
         }
-
     }
 }
-

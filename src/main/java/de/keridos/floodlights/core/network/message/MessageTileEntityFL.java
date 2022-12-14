@@ -4,7 +4,11 @@ import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 import de.keridos.floodlights.FloodLights;
-import de.keridos.floodlights.tileentity.*;
+import de.keridos.floodlights.tileentity.TileEntityCarbonFloodlight;
+import de.keridos.floodlights.tileentity.TileEntityFL;
+import de.keridos.floodlights.tileentity.TileEntityFLElectric;
+import de.keridos.floodlights.tileentity.TileEntityMetaFloodlight;
+import de.keridos.floodlights.tileentity.TileEntitySmallFloodlight;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -19,8 +23,7 @@ public class MessageTileEntityFL implements IMessage {
     public boolean rotationState, wasActive;
     public String customName, owner;
 
-    public MessageTileEntityFL() {
-    }
+    public MessageTileEntityFL() {}
 
     public static class MessageHandlerTileEntityFL implements IMessageHandler<MessageTileEntityFL, IMessage> {
         @Override
@@ -121,6 +124,8 @@ public class MessageTileEntityFL implements IMessage {
 
     @Override
     public String toString() {
-        return String.format("MessageTileEntityFL - x:%s, y:%s, z:%s, timeRemaining:%s, orientation:%s, state:%s, customName:%s, owner:%s", x, y, z, timeRemaining, orientation, state, customName, owner);
+        return String.format(
+                "MessageTileEntityFL - x:%s, y:%s, z:%s, timeRemaining:%s, orientation:%s, state:%s, customName:%s, owner:%s",
+                x, y, z, timeRemaining, orientation, state, customName, owner);
     }
 }
