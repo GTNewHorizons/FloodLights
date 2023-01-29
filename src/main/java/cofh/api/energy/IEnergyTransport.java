@@ -5,8 +5,8 @@ import net.minecraftforge.common.util.ForgeDirection;
 /**
  * Implement this interface on Tile Entities which transport energy.
  * <p>
- * This is used to "negotiate" connection types between two separate IEnergyTransports, allowing users to set flow direction and allowing for networks Of
- * IEnergyTransports to intelligently transfer energy to other networks.
+ * This is used to "negotiate" connection types between two separate IEnergyTransports, allowing users to set flow
+ * direction and allowing for networks Of IEnergyTransports to intelligently transfer energy to other networks.
  */
 public interface IEnergyTransport extends IEnergyProvider, IEnergyReceiver {
 
@@ -19,6 +19,7 @@ public interface IEnergyTransport extends IEnergyProvider, IEnergyReceiver {
      * {@link BALANCE} for sending and receiving, and the default state
      */
     public enum InterfaceType {
+
         /**
          * Indicates that this {@link IEnergyTransport} is only sending power on this side.
          */
@@ -28,14 +29,14 @@ public interface IEnergyTransport extends IEnergyProvider, IEnergyReceiver {
          */
         RECEIVE,
         /**
-         * Indicates that this {@link IEnergyTransport} wants to balance power between itself and the
-         * senders/receivers on this side. This is the default state.<br>
+         * Indicates that this {@link IEnergyTransport} wants to balance power between itself and the senders/receivers
+         * on this side. This is the default state.<br>
          * To block any connection, use {@link IEnergyConnection#canConnectEnergy}
          * <p>
-         * IEnergyTransport based senders should check that the total power in the destination IEnergyTransport is less than the power in themselves before sending.
-         * <br>
-         * Active IEnergyTransport receivers (i.e., those that call {@link IEnergyProvider#extractEnergy}) should check that they contain less power than the
-         * source IEnergyTransport.
+         * IEnergyTransport based senders should check that the total power in the destination IEnergyTransport is less
+         * than the power in themselves before sending. <br>
+         * Active IEnergyTransport receivers (i.e., those that call {@link IEnergyProvider#extractEnergy}) should check
+         * that they contain less power than the source IEnergyTransport.
          */
         BALANCE;
 
@@ -61,8 +62,8 @@ public interface IEnergyTransport extends IEnergyProvider, IEnergyReceiver {
         /**
          * Returns the next InterfaceType as described in {@link IEnergyTransport#getTransportState}
          *
-         * @param forward
-         *            Whether to step in the order specified by {@link IEnergyTransport#getTransportState} (<tt>true</tt>) or to step in the opposite direction
+         * @param forward Whether to step in the order specified by {@link IEnergyTransport#getTransportState}
+         *                (<tt>true</tt>) or to step in the opposite direction
          */
         public InterfaceType rotate(boolean forward) {
 
@@ -84,8 +85,8 @@ public interface IEnergyTransport extends IEnergyProvider, IEnergyReceiver {
     /**
      * Indicates to other IEnergyTransports the state of the given side. See {@link #InterfaceType} for details.
      * <p>
-     * For clarity of state tracking, on a tile update from another IEnergyTransport, if its mode has changed from the opposite of your own mode on that side, you
-     * should change your mode to the opposite of its mode.
+     * For clarity of state tracking, on a tile update from another IEnergyTransport, if its mode has changed from the
+     * opposite of your own mode on that side, you should change your mode to the opposite of its mode.
      * <p>
      * When the user alters your mode and your state is:<br>
      * BALANCE, your mode should change to {@link InterFaceType#RECEIVE}.<br>
@@ -98,7 +99,8 @@ public interface IEnergyTransport extends IEnergyProvider, IEnergyReceiver {
     InterfaceType getTransportState(ForgeDirection from);
 
     /**
-     * This method is provided primarily for the purposes of automation tools, and should not need to be called by another IEnergyTransport.
+     * This method is provided primarily for the purposes of automation tools, and should not need to be called by
+     * another IEnergyTransport.
      * <p>
      * Calls to this method may fail if this IEnergyTransport has been secured by a user.
      *

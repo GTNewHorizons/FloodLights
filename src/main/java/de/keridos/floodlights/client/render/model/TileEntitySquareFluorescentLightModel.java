@@ -5,10 +5,10 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
 /**
- * Created by Keridos on 15.07.2015.
- * This Class
+ * Created by Keridos on 15.07.2015. This Class
  */
 public class TileEntitySquareFluorescentLightModel extends ModelBase {
+
     public ModelRenderer shape1;
 
     public TileEntitySquareFluorescentLightModel() {

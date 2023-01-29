@@ -5,11 +5,11 @@ import net.minecraft.item.ItemBlockWithMetadata;
 import net.minecraft.item.ItemStack;
 
 /**
- * Created by Keridos on 14.07.2015.
- * This Class
+ * Created by Keridos on 14.07.2015. This Class
  */
 public class ItemBlockSmallElectricMetaBlock extends ItemBlockWithMetadata {
-    private static final String[] subNames = {"smallFluorescent", "squareFluorescent"};
+
+    private static final String[] subNames = { "smallFluorescent", "squareFluorescent" };
 
     public ItemBlockSmallElectricMetaBlock(Block block) {
         super(block, block);

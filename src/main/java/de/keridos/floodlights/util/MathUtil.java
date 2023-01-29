@@ -3,8 +3,7 @@ package de.keridos.floodlights.util;
 import net.minecraftforge.common.util.ForgeDirection;
 
 /**
- * Created by Keridos on 28/11/2014.
- * This Class
+ * Created by Keridos on 28/11/2014. This Class
  */
 public class MathUtil {
 

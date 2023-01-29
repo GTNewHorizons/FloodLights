@@ -1,5 +1,7 @@
 package de.keridos.floodlights.tileentity;
 
+import net.minecraft.world.World;
+
 import cofh.api.energy.IEnergyContainerItem;
 import de.keridos.floodlights.compatability.ModCompatibility;
 import de.keridos.floodlights.handler.ConfigHandler;
@@ -7,11 +9,9 @@ import de.keridos.floodlights.init.ModBlocks;
 import de.keridos.floodlights.util.MathUtil;
 import ic2.api.item.ElectricItem;
 import ic2.api.item.IElectricItem;
-import net.minecraft.world.World;
 
 /**
- * Created by Keridos on 15/09/2015.
- * This Class
+ * Created by Keridos on 15/09/2015. This Class
  */
 public class TileEntityUVLight extends TileEntityFLElectric {
 
@@ -38,15 +38,16 @@ public class TileEntityUVLight extends TileEntityFLElectric {
                 }
             } else if (worldObj.getBlock(x, y, z).isAir(worldObj, x, y, z)
                     || worldObj.getBlock(x, y, z) == ModBlocks.blockPhantomLight) {
-                worldObj.setBlockToAir(x, y, z);
-                worldObj.removeTileEntity(x, y, z);
-                setLightUV(x, y, z);
-            } else if (worldObj.getBlock(x, y, z) == ModBlocks.blockUVLightBlock) {
-                TileEntityUVLightBlock light = (TileEntityUVLightBlock) worldObj.getTileEntity(x, y, z);
-                light.addSource(this.xCoord, this.yCoord, this.zCoord);
-            } else if (worldObj.getBlock(x, y, z).isOpaqueCube()) {
-                break;
-            }
+                        worldObj.setBlockToAir(x, y, z);
+                        worldObj.removeTileEntity(x, y, z);
+                        setLightUV(x, y, z);
+                    } else
+                if (worldObj.getBlock(x, y, z) == ModBlocks.blockUVLightBlock) {
+                    TileEntityUVLightBlock light = (TileEntityUVLightBlock) worldObj.getTileEntity(x, y, z);
+                    light.addSource(this.xCoord, this.yCoord, this.zCoord);
+                } else if (worldObj.getBlock(x, y, z).isOpaqueCube()) {
+                    break;
+                }
         }
     }
 
@@ -62,10 +63,12 @@ public class TileEntityUVLight extends TileEntityFLElectric {
             if (inventory[0] != null) {
                 if (ModCompatibility.IC2Loaded) {
                     if (inventory[0].getItem() instanceof IElectricItem) {
-                        double dischargeValue =
-                                (storage.getMaxEnergyStored() - (double) storage.getEnergyStored()) / 8.0D;
-                        storage.modifyEnergyStored(MathUtil.truncateDoubleToInt(8.0D
-                                * ElectricItem.manager.discharge(inventory[0], dischargeValue, 4, false, true, false)));
+                        double dischargeValue = (storage.getMaxEnergyStored() - (double) storage.getEnergyStored())
+                                / 8.0D;
+                        storage.modifyEnergyStored(
+                                MathUtil.truncateDoubleToInt(
+                                        8.0D * ElectricItem.manager
+                                                .discharge(inventory[0], dischargeValue, 4, false, true, false)));
                     }
                 }
                 if (inventory[0].getItem() instanceof IEnergyContainerItem) {
@@ -104,18 +107,17 @@ public class TileEntityUVLight extends TileEntityFLElectric {
                 }
                 wasActive = true;
             } else if ((!active
-                            || (storage.getEnergyStored() < realEnergyUsage
-                                    && storageEU < (double) realEnergyUsage / 8.0D))
+                    || (storage.getEnergyStored() < realEnergyUsage && storageEU < (double) realEnergyUsage / 8.0D))
                     && wasActive) {
-                UVSource(true);
-                world.setBlockMetadataWithNotify(
-                        this.xCoord,
-                        this.yCoord,
-                        this.zCoord,
-                        world.getBlockMetadata(this.xCoord, this.yCoord, this.zCoord) - 6,
-                        2);
-                wasActive = false;
-            }
+                        UVSource(true);
+                        world.setBlockMetadataWithNotify(
+                                this.xCoord,
+                                this.yCoord,
+                                this.zCoord,
+                                world.getBlockMetadata(this.xCoord, this.yCoord, this.zCoord) - 6,
+                                2);
+                        wasActive = false;
+                    }
         }
     }
 }

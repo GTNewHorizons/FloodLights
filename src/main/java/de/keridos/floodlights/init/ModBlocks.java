@@ -1,5 +1,7 @@
 package de.keridos.floodlights.init;
 
+import net.minecraft.block.Block;
+
 import cpw.mods.fml.common.registry.GameRegistry;
 import de.keridos.floodlights.block.BlockCarbonFloodlight;
 import de.keridos.floodlights.block.BlockElectricFloodlight;
@@ -18,13 +20,12 @@ import de.keridos.floodlights.tileentity.TileEntityPhantomLight;
 import de.keridos.floodlights.tileentity.TileEntitySmallFloodlight;
 import de.keridos.floodlights.tileentity.TileEntityUVLight;
 import de.keridos.floodlights.tileentity.TileEntityUVLightBlock;
-import net.minecraft.block.Block;
 
 /**
- * Created by Keridos on 04.10.14.
- * This Class manages all blocks and TileEntities that this mod uses.
+ * Created by Keridos on 04.10.14. This Class manages all blocks and TileEntities that this mod uses.
  */
 public class ModBlocks {
+
     public static Block blockElectricLight;
     public static Block blockCarbonLight;
     public static Block blockPhantomLight;
@@ -48,7 +49,9 @@ public class ModBlocks {
         GameRegistry.registerBlock(blockCarbonLight, Names.Blocks.CARBON_FLOODLIGHT);
         GameRegistry.registerBlock(blockPhantomLight, Names.Blocks.PHANTOM_LIGHT);
         GameRegistry.registerBlock(
-                blockSmallElectricLight, ItemBlockSmallElectricMetaBlock.class, Names.Blocks.SMALL_ELECTRIC_FLOODLIGHT);
+                blockSmallElectricLight,
+                ItemBlockSmallElectricMetaBlock.class,
+                Names.Blocks.SMALL_ELECTRIC_FLOODLIGHT);
         GameRegistry.registerBlock(blockUVLight, Names.Blocks.UV_FLOODLIGHT);
         GameRegistry.registerBlock(blockUVLightBlock, Names.Blocks.UV_LIGHTBLOCK);
         GameRegistry.registerBlock(blockGrowLight, Names.Blocks.GROW_LIGHT);
@@ -65,12 +68,16 @@ public class ModBlocks {
                 TileEntitySmallFloodlight.class,
                 Reference.MOD_ID.toLowerCase() + ":" + Names.Blocks.SMALL_ELECTRIC_FLOODLIGHT);
         GameRegistry.registerTileEntity(
-                TileEntityUVLight.class, Reference.MOD_ID.toLowerCase() + ":" + Names.Blocks.UV_FLOODLIGHT);
+                TileEntityUVLight.class,
+                Reference.MOD_ID.toLowerCase() + ":" + Names.Blocks.UV_FLOODLIGHT);
         GameRegistry.registerTileEntity(
-                TileEntityPhantomLight.class, Reference.MOD_ID.toLowerCase() + ":" + Names.Blocks.PHANTOM_LIGHT);
+                TileEntityPhantomLight.class,
+                Reference.MOD_ID.toLowerCase() + ":" + Names.Blocks.PHANTOM_LIGHT);
         GameRegistry.registerTileEntity(
-                TileEntityUVLightBlock.class, Reference.MOD_ID.toLowerCase() + ":" + Names.Blocks.UV_LIGHTBLOCK);
+                TileEntityUVLightBlock.class,
+                Reference.MOD_ID.toLowerCase() + ":" + Names.Blocks.UV_LIGHTBLOCK);
         GameRegistry.registerTileEntity(
-                TileEntityGrowLight.class, Reference.MOD_ID.toLowerCase() + ":" + Names.Blocks.GROW_LIGHT);
+                TileEntityGrowLight.class,
+                Reference.MOD_ID.toLowerCase() + ":" + Names.Blocks.GROW_LIGHT);
     }
 }

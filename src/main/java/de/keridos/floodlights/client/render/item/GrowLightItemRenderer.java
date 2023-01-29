@@ -1,25 +1,26 @@
 package de.keridos.floodlights.client.render.item;
 
-import de.keridos.floodlights.client.render.block.TileEntityGrowLightRenderer;
-import de.keridos.floodlights.client.render.model.TileEntitySquareFluorescentLightModel;
-import de.keridos.floodlights.reference.Textures;
-import de.keridos.floodlights.tileentity.TileEntityGrowLight;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
+
 import org.lwjgl.opengl.GL11;
 
+import de.keridos.floodlights.client.render.block.TileEntityGrowLightRenderer;
+import de.keridos.floodlights.client.render.model.TileEntitySquareFluorescentLightModel;
+import de.keridos.floodlights.reference.Textures;
+import de.keridos.floodlights.tileentity.TileEntityGrowLight;
+
 /**
- * Created by Keridos on 30.06.2015.
- * This Class
+ * Created by Keridos on 30.06.2015. This Class
  */
 public class GrowLightItemRenderer implements IItemRenderer {
 
     private final TileEntitySquareFluorescentLightModel modelGrowLight;
 
-    public GrowLightItemRenderer(
-            TileEntityGrowLightRenderer tileEntityGrowLightRenderer, TileEntityGrowLight tileEntityGrowLight) {
+    public GrowLightItemRenderer(TileEntityGrowLightRenderer tileEntityGrowLightRenderer,
+            TileEntityGrowLight tileEntityGrowLight) {
         this.modelGrowLight = new TileEntitySquareFluorescentLightModel();
     }
 

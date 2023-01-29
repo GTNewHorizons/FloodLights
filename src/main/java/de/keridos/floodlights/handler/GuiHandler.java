@@ -1,5 +1,9 @@
 package de.keridos.floodlights.handler;
 
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
+
 import cpw.mods.fml.common.network.IGuiHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import de.keridos.floodlights.FloodLights;
@@ -9,15 +13,12 @@ import de.keridos.floodlights.client.gui.container.ContainerCarbonFloodlight;
 import de.keridos.floodlights.client.gui.container.ContainerElectricFloodlight;
 import de.keridos.floodlights.tileentity.TileEntityCarbonFloodlight;
 import de.keridos.floodlights.tileentity.TileEntityFLElectric;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.World;
 
 /**
- * Created by Keridos on 28.02.14.
- * This Class handles the GUIs that this mod uses (will use soon).
+ * Created by Keridos on 28.02.14. This Class handles the GUIs that this mod uses (will use soon).
  */
 public class GuiHandler implements IGuiHandler {
+
     private static GuiHandler instance = null;
 
     private GuiHandler() {

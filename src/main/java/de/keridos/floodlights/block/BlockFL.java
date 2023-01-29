@@ -1,12 +1,7 @@
 package de.keridos.floodlights.block;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import de.keridos.floodlights.client.gui.CreativeTabFloodlight;
-import de.keridos.floodlights.reference.Names;
-import de.keridos.floodlights.reference.Textures;
-import de.keridos.floodlights.tileentity.TileEntityFL;
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -21,11 +16,18 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import de.keridos.floodlights.client.gui.CreativeTabFloodlight;
+import de.keridos.floodlights.reference.Names;
+import de.keridos.floodlights.reference.Textures;
+import de.keridos.floodlights.tileentity.TileEntityFL;
+
 /**
- * Created by Keridos on 28.02.14.
- * This Class describes the generic block this mod uses.
+ * Created by Keridos on 28.02.14. This Class describes the generic block this mod uses.
  */
 public class BlockFL extends Block {
+
     protected String unlocName;
     public IIcon topIcon;
     public IIcon topOnIcon;
@@ -45,21 +47,21 @@ public class BlockFL extends Block {
 
     @Override
     public String getUnlocalizedName() {
-        return String.format(
-                "tile.%s%s", Textures.RESOURCE_PREFIX, getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
+        return String
+                .format("tile.%s%s", Textures.RESOURCE_PREFIX, getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
     }
 
     @Override
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister iconRegister) {
-        topIcon = iconRegister.registerIcon(
-                String.format("%s", getUnwrappedUnlocalizedName(this.getUnlocalizedName() + "_top")));
-        topOnIcon = iconRegister.registerIcon(
-                String.format("%s", getUnwrappedUnlocalizedName(this.getUnlocalizedName() + "_top_on")));
-        botIcon = iconRegister.registerIcon(
-                String.format("%s", getUnwrappedUnlocalizedName(this.getUnlocalizedName() + "_bot")));
-        sideIcon = iconRegister.registerIcon(
-                String.format("%s", getUnwrappedUnlocalizedName(this.getUnlocalizedName() + "_side")));
+        topIcon = iconRegister
+                .registerIcon(String.format("%s", getUnwrappedUnlocalizedName(this.getUnlocalizedName() + "_top")));
+        topOnIcon = iconRegister
+                .registerIcon(String.format("%s", getUnwrappedUnlocalizedName(this.getUnlocalizedName() + "_top_on")));
+        botIcon = iconRegister
+                .registerIcon(String.format("%s", getUnwrappedUnlocalizedName(this.getUnlocalizedName() + "_bot")));
+        sideIcon = iconRegister
+                .registerIcon(String.format("%s", getUnwrappedUnlocalizedName(this.getUnlocalizedName() + "_side")));
     }
 
     // For rotatable block, topIcon is front, botIcon is rear.
@@ -116,8 +118,7 @@ public class BlockFL extends Block {
                 float dZ = rand.nextFloat() * 0.8F + 0.1F;
                 EntityItem entityItem = new EntityItem(world, x + dX, y + dY, z + dZ, itemStack.copy());
                 if (itemStack.hasTagCompound()) {
-                    entityItem.getEntityItem().setTagCompound((NBTTagCompound)
-                            itemStack.getTagCompound().copy());
+                    entityItem.getEntityItem().setTagCompound((NBTTagCompound) itemStack.getTagCompound().copy());
                 }
                 float factor = 0.05F;
                 entityItem.motionX = rand.nextGaussian() * factor;
@@ -132,19 +133,11 @@ public class BlockFL extends Block {
     public int getFacing(EntityLivingBase entityLiving) {
         float rotationYaw = MathHelper.wrapAngleTo180_float(entityLiving.rotationYaw);
         float rotationPitch = (entityLiving.rotationPitch);
-        int result = (rotationPitch < -45.0F
-                ? 1
-                : (rotationPitch > 45.0F
-                        ? 0
+        int result = (rotationPitch < -45.0F ? 1
+                : (rotationPitch > 45.0F ? 0
                         : ((MathHelper.floor_double(rotationYaw * 4.0F / 360.0F + 0.5D) & 3) + 2)));
-        ForgeDirection[] direction = {
-            ForgeDirection.UP,
-            ForgeDirection.DOWN,
-            ForgeDirection.NORTH,
-            ForgeDirection.EAST,
-            ForgeDirection.SOUTH,
-            ForgeDirection.WEST
-        };
+        ForgeDirection[] direction = { ForgeDirection.UP, ForgeDirection.DOWN, ForgeDirection.NORTH,
+                ForgeDirection.EAST, ForgeDirection.SOUTH, ForgeDirection.WEST };
         return direction[result].ordinal();
     }
 }

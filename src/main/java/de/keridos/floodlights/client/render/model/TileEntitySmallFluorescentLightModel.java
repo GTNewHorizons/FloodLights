@@ -5,11 +5,10 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
 /**
- * Created by Keridos on 05.05.2015.
- * Small Floodlight - Keridos
- * Created using Tabula 5.0.0
+ * Created by Keridos on 05.05.2015. Small Floodlight - Keridos Created using Tabula 5.0.0
  */
 public class TileEntitySmallFluorescentLightModel extends ModelBase {
+
     public ModelRenderer shape1;
 
     public TileEntitySmallFluorescentLightModel() {

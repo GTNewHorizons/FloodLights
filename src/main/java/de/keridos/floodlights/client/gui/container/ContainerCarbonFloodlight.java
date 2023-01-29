@@ -1,18 +1,19 @@
 package de.keridos.floodlights.client.gui.container;
 
-import de.keridos.floodlights.client.gui.slot.FuelSlot;
-import de.keridos.floodlights.tileentity.TileEntityCarbonFloodlight;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
+import de.keridos.floodlights.client.gui.slot.FuelSlot;
+import de.keridos.floodlights.tileentity.TileEntityCarbonFloodlight;
+
 /**
- * Created by Keridos on 09/10/2014.
- * This Class describes the Container for the Carbon Floodlight.
+ * Created by Keridos on 09/10/2014. This Class describes the Container for the Carbon Floodlight.
  */
 public class ContainerCarbonFloodlight extends Container {
+
     private TileEntityCarbonFloodlight carbonFloodlight;
 
     public ContainerCarbonFloodlight(InventoryPlayer invPlayer, TileEntityCarbonFloodlight entity) {
@@ -57,7 +58,7 @@ public class ContainerCarbonFloodlight extends Container {
 
     @Override
     public boolean canInteractWith(EntityPlayer player) {
-        return carbonFloodlight.isUseableByPlayer(
-                player); // To change body of implemented methods use File | Settings | File Templates.
+        return carbonFloodlight.isUseableByPlayer(player); // To change body of implemented methods use File | Settings
+                                                           // | File Templates.
     }
 }

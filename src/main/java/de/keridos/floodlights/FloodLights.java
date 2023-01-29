@@ -1,5 +1,10 @@
 package de.keridos.floodlights;
 
+import java.util.Map;
+
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.config.Configuration;
+
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
@@ -20,13 +25,9 @@ import de.keridos.floodlights.init.ModBlocks;
 import de.keridos.floodlights.init.ModItems;
 import de.keridos.floodlights.reference.Reference;
 import de.keridos.floodlights.util.RandomUtil;
-import java.util.Map;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.config.Configuration;
 
 /**
- * Created by Keridos on 28.02.14.
- * This Class is the Main Class of the Mod.
+ * Created by Keridos on 28.02.14. This Class is the Main Class of the Mod.
  */
 @Mod(
         modid = Reference.MOD_ID,
@@ -34,6 +35,7 @@ import net.minecraftforge.common.config.Configuration;
         version = Reference.VERSION,
         dependencies = Reference.DEPENDENCIES)
 public class FloodLights {
+
     @Mod.Instance(Reference.MOD_ID)
     public static FloodLights instance;
 

@@ -1,16 +1,17 @@
 package de.keridos.floodlights.compatability;
 
-import de.keridos.floodlights.init.ModBlocks;
-import igwmod.gui.GuiWiki;
-import igwmod.gui.tabs.BaseWikiTab;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 
+import de.keridos.floodlights.init.ModBlocks;
+import igwmod.gui.GuiWiki;
+import igwmod.gui.tabs.BaseWikiTab;
+
 /**
- * Created by Keridos on 02/12/2014.
- * This Class
+ * Created by Keridos on 02/12/2014. This Class
  */
 public class FloodLightsWikiTab extends BaseWikiTab {
+
     public FloodLightsWikiTab() {
         pageEntries.add("block/electricFloodlight");
         pageEntries.add("block/carbonFloodlight");

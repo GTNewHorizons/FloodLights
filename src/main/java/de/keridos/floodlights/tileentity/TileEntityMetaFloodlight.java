@@ -2,20 +2,21 @@ package de.keridos.floodlights.tileentity;
 
 import static de.keridos.floodlights.util.MathUtil.rotate;
 
-import de.keridos.floodlights.handler.ConfigHandler;
-import de.keridos.floodlights.init.ModBlocks;
-import de.keridos.floodlights.reference.Names;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 
+import de.keridos.floodlights.handler.ConfigHandler;
+import de.keridos.floodlights.init.ModBlocks;
+import de.keridos.floodlights.reference.Names;
+
 /**
- * Created by Keridos on 06.05.2015.
- * This Class
+ * Created by Keridos on 06.05.2015. This Class
  */
 public class TileEntityMetaFloodlight extends TileEntityFL implements ISidedInventory {
+
     protected boolean active;
     protected boolean wasActive;
     protected boolean update = true;
@@ -108,7 +109,7 @@ public class TileEntityMetaFloodlight extends TileEntityFL implements ISidedInve
 
     @Override
     public int[] getAccessibleSlotsFromSide(int par1) {
-        return new int[] {0};
+        return new int[] { 0 };
     }
 
     @Override
@@ -217,12 +218,10 @@ public class TileEntityMetaFloodlight extends TileEntityFL implements ISidedInve
 
     public void wideConeSource(boolean remove) {
         boolean[] failedBeams = new boolean[9];
-        if (!remove
-                && worldObj.getBlock(
-                                this.xCoord + this.orientation.offsetX,
-                                this.yCoord + this.orientation.offsetY,
-                                this.zCoord + this.orientation.offsetZ)
-                        .isOpaqueCube()) {
+        if (!remove && worldObj.getBlock(
+                this.xCoord + this.orientation.offsetX,
+                this.yCoord + this.orientation.offsetY,
+                this.zCoord + this.orientation.offsetZ).isOpaqueCube()) {
             return;
         }
         for (int j = 0; j <= 16; j++) {
@@ -394,11 +393,8 @@ public class TileEntityMetaFloodlight extends TileEntityFL implements ISidedInve
                             c -= i / 2;
                             break;
                     }
-                    int[] rotatedCoords = rotate(
-                            a,
-                            b,
-                            c,
-                            this.orientation); // rotate the coordinate to the correct spot in the real world :)
+                    int[] rotatedCoords = rotate(a, b, c, this.orientation); // rotate the coordinate to the correct
+                                                                             // spot in the real world :)
                     int x = this.xCoord + rotatedCoords[0];
                     int y = this.yCoord + rotatedCoords[1];
                     int z = this.zCoord + rotatedCoords[2];

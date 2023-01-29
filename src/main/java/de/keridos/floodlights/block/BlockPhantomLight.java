@@ -1,10 +1,7 @@
 package de.keridos.floodlights.block;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import de.keridos.floodlights.reference.Names;
-import de.keridos.floodlights.tileentity.TileEntityPhantomLight;
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -14,11 +11,16 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import de.keridos.floodlights.reference.Names;
+import de.keridos.floodlights.tileentity.TileEntityPhantomLight;
+
 /**
- * Created by Keridos on 01.10.14.
- * This Class implements the invislbe light block the mod uses to light up areas.
+ * Created by Keridos on 01.10.14. This Class implements the invislbe light block the mod uses to light up areas.
  */
 public class BlockPhantomLight extends BlockFL implements ITileEntityProvider {
+
     public BlockPhantomLight() {
         super(Names.Blocks.PHANTOM_LIGHT, Material.glass, soundTypeCloth, 0.0F);
     }

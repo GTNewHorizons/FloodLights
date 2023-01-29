@@ -3,6 +3,13 @@ package de.keridos.floodlights.tileentity;
 import static de.keridos.floodlights.util.GeneralUtil.safeLocalize;
 import static de.keridos.floodlights.util.MathUtil.rotate;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.IGrowable;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.world.World;
+import net.minecraftforge.common.util.ForgeDirection;
+
 import cofh.api.energy.IEnergyContainerItem;
 import de.keridos.floodlights.compatability.ModCompatibility;
 import de.keridos.floodlights.handler.ConfigHandler;
@@ -14,18 +21,12 @@ import de.keridos.floodlights.util.MathUtil;
 import de.keridos.floodlights.util.RandomUtil;
 import ic2.api.item.ElectricItem;
 import ic2.api.item.IElectricItem;
-import net.minecraft.block.Block;
-import net.minecraft.block.IGrowable;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.ChatComponentText;
-import net.minecraft.world.World;
-import net.minecraftforge.common.util.ForgeDirection;
 
 /**
- * Created by Keridos on 04.05.2015.
- * This Class is the tile entity for the small floodlight.
+ * Created by Keridos on 04.05.2015. This Class is the tile entity for the small floodlight.
  */
 public class TileEntityGrowLight extends TileEntityFLElectric {
+
     private long nextGrowTick = 0;
 
     @Override
@@ -62,10 +63,12 @@ public class TileEntityGrowLight extends TileEntityFLElectric {
             if (inventory[0] != null) {
                 if (ModCompatibility.IC2Loaded) {
                     if (inventory[0].getItem() instanceof IElectricItem) {
-                        double dischargeValue =
-                                (storage.getMaxEnergyStored() - (double) storage.getEnergyStored()) / 8.0D;
-                        storage.modifyEnergyStored(MathUtil.truncateDoubleToInt(8
-                                * ElectricItem.manager.discharge(inventory[0], dischargeValue, 4, false, true, false)));
+                        double dischargeValue = (storage.getMaxEnergyStored() - (double) storage.getEnergyStored())
+                                / 8.0D;
+                        storage.modifyEnergyStored(
+                                MathUtil.truncateDoubleToInt(
+                                        8 * ElectricItem.manager
+                                                .discharge(inventory[0], dischargeValue, 4, false, true, false)));
                     }
                 }
                 if (inventory[0].getItem() instanceof IEnergyContainerItem) {
@@ -95,13 +98,12 @@ public class TileEntityGrowLight extends TileEntityFLElectric {
                     Block blockFront = worldObj.getBlock(blockPosFront.posX, blockPosFront.posY, blockPosFront.posZ);
                     if (GeneralUtil.isBlockValidGrowable(block, world, blockPosTarget)
                             && blockFront.isAir(world, blockPosFront.posX, blockPosFront.posY, blockPosFront.posZ)) {
-                        ((IGrowable) block)
-                                .func_149853_b(
-                                        world,
-                                        RandomUtil.random,
-                                        blockPosTarget.posX,
-                                        blockPosTarget.posY,
-                                        blockPosTarget.posZ);
+                        ((IGrowable) block).func_149853_b(
+                                world,
+                                RandomUtil.random,
+                                blockPosTarget.posX,
+                                blockPosTarget.posY,
+                                blockPosTarget.posZ);
                     }
                     nextGrowTick = world.getWorldTime()
                             + RandomUtil.getRandomTickTimeoutFromFloatChance(ConfigHandler.chanceGrowLight);
@@ -126,17 +128,16 @@ public class TileEntityGrowLight extends TileEntityFLElectric {
                 }
                 wasActive = true;
             } else if ((!active
-                            || (storage.getEnergyStored() < realEnergyUsage
-                                    && storageEU < (double) realEnergyUsage / 8.0D))
+                    || (storage.getEnergyStored() < realEnergyUsage && storageEU < (double) realEnergyUsage / 8.0D))
                     && wasActive) {
-                if (mode == 0) {
-                    growSource(true);
-                }
-                world.markBlockForUpdate(this.xCoord, this.yCoord, this.zCoord);
-                wasActive = false;
-                timeout = ConfigHandler.timeoutFloodlights;
-                update = false;
-            }
+                        if (mode == 0) {
+                            growSource(true);
+                        }
+                        world.markBlockForUpdate(this.xCoord, this.yCoord, this.zCoord);
+                        wasActive = false;
+                        timeout = ConfigHandler.timeoutFloodlights;
+                        update = false;
+                    }
         }
     }
 

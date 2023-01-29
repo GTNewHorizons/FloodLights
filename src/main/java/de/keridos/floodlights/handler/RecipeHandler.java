@@ -2,18 +2,19 @@ package de.keridos.floodlights.handler;
 
 import static de.keridos.floodlights.util.GeneralUtil.getMinecraftItem;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-import de.keridos.floodlights.init.ModBlocks;
-import de.keridos.floodlights.init.ModItems;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
+import cpw.mods.fml.common.registry.GameRegistry;
+import de.keridos.floodlights.init.ModBlocks;
+import de.keridos.floodlights.init.ModItems;
+
 /**
- * Created by Keridos on 28.02.14.
- * This Class adds all Recipes for this mod.
+ * Created by Keridos on 28.02.14. This Class adds all Recipes for this mod.
  */
 public class RecipeHandler {
+
     private static RecipeHandler instance = null;
 
     private RecipeHandler() {}
@@ -38,9 +39,10 @@ public class RecipeHandler {
                     new ItemStack(getMinecraftItem("gold_ingot"), 1),
                     'L',
                     new ItemStack(getMinecraftItem("glowstone_dust"), 1));
-            FurnaceRecipes.smelting()
-                    .func_151394_a(
-                            new ItemStack(ModItems.rawFilament, 1), new ItemStack(ModItems.glowingFilament, 1), 0.1F);
+            FurnaceRecipes.smelting().func_151394_a(
+                    new ItemStack(ModItems.rawFilament, 1),
+                    new ItemStack(ModItems.glowingFilament, 1),
+                    0.1F);
             GameRegistry.addRecipe(
                     new ItemStack(ModItems.lightBulb, 1),
                     " G ",
@@ -54,32 +56,34 @@ public class RecipeHandler {
                     new ItemStack(getMinecraftItem("iron_ingot"), 1));
         }
         if (ConfigHandler.electricFloodlight) {
-            GameRegistry.addRecipe(new ShapedOreRecipe(
-                    new ItemStack(ModBlocks.blockElectricLight, 1),
-                    "CIC",
-                    "IBG",
-                    "CIC",
-                    'C',
-                    new ItemStack(getMinecraftItem("cobblestone"), 1),
-                    'I',
-                    new ItemStack(getMinecraftItem("iron_ingot"), 1),
-                    'B',
-                    new ItemStack(ModItems.lightBulb, 1),
-                    'G',
-                    new ItemStack(getMinecraftItem("glass"), 1)));
+            GameRegistry.addRecipe(
+                    new ShapedOreRecipe(
+                            new ItemStack(ModBlocks.blockElectricLight, 1),
+                            "CIC",
+                            "IBG",
+                            "CIC",
+                            'C',
+                            new ItemStack(getMinecraftItem("cobblestone"), 1),
+                            'I',
+                            new ItemStack(getMinecraftItem("iron_ingot"), 1),
+                            'B',
+                            new ItemStack(ModItems.lightBulb, 1),
+                            'G',
+                            new ItemStack(getMinecraftItem("glass"), 1)));
         }
         if (ConfigHandler.smallElectricFloodlight) {
-            GameRegistry.addRecipe(new ShapedOreRecipe(
-                    new ItemStack(ModBlocks.blockSmallElectricLight, 2, 0),
-                    " G ",
-                    "GBG",
-                    "III",
-                    'I',
-                    new ItemStack(getMinecraftItem("iron_ingot"), 1),
-                    'B',
-                    new ItemStack(ModItems.lightBulb, 1),
-                    'G',
-                    new ItemStack(getMinecraftItem("glass"), 1)));
+            GameRegistry.addRecipe(
+                    new ShapedOreRecipe(
+                            new ItemStack(ModBlocks.blockSmallElectricLight, 2, 0),
+                            " G ",
+                            "GBG",
+                            "III",
+                            'I',
+                            new ItemStack(getMinecraftItem("iron_ingot"), 1),
+                            'B',
+                            new ItemStack(ModItems.lightBulb, 1),
+                            'G',
+                            new ItemStack(getMinecraftItem("glass"), 1)));
             GameRegistry.addShapelessRecipe(
                     new ItemStack(ModBlocks.blockSmallElectricLight, 1, 1),
                     new ItemStack(ModBlocks.blockSmallElectricLight, 1, 0));
@@ -122,49 +126,52 @@ public class RecipeHandler {
                     new ItemStack(ModItems.carbonDissolver, 1),
                     'F',
                     new ItemStack(getMinecraftItem("flint_and_steel"), 1));
-            GameRegistry.addRecipe(new ShapedOreRecipe(
-                    new ItemStack(ModBlocks.blockCarbonLight, 1),
-                    "CIC",
-                    "IBG",
-                    "CIC",
-                    'C',
-                    new ItemStack(getMinecraftItem("cobblestone"), 1),
-                    'I',
-                    new ItemStack(getMinecraftItem("iron_ingot"), 1),
-                    'B',
-                    new ItemStack(ModItems.carbonLantern, 1),
-                    'G',
-                    new ItemStack(getMinecraftItem("glass"), 1)));
+            GameRegistry.addRecipe(
+                    new ShapedOreRecipe(
+                            new ItemStack(ModBlocks.blockCarbonLight, 1),
+                            "CIC",
+                            "IBG",
+                            "CIC",
+                            'C',
+                            new ItemStack(getMinecraftItem("cobblestone"), 1),
+                            'I',
+                            new ItemStack(getMinecraftItem("iron_ingot"), 1),
+                            'B',
+                            new ItemStack(ModItems.carbonLantern, 1),
+                            'G',
+                            new ItemStack(getMinecraftItem("glass"), 1)));
         }
         if (ConfigHandler.uvFloodlight) {
-            GameRegistry.addRecipe(new ShapedOreRecipe(
-                    new ItemStack(ModBlocks.blockUVLight, 1),
-                    "CIC",
-                    "IBG",
-                    "CIC",
-                    'C',
-                    new ItemStack(getMinecraftItem("cobblestone"), 1),
-                    'I',
-                    new ItemStack(getMinecraftItem("iron_ingot"), 1),
-                    'B',
-                    new ItemStack(ModItems.lightBulb, 1),
-                    'G',
-                    new ItemStack(getMinecraftItem("stained_glass"), 1, 15)));
+            GameRegistry.addRecipe(
+                    new ShapedOreRecipe(
+                            new ItemStack(ModBlocks.blockUVLight, 1),
+                            "CIC",
+                            "IBG",
+                            "CIC",
+                            'C',
+                            new ItemStack(getMinecraftItem("cobblestone"), 1),
+                            'I',
+                            new ItemStack(getMinecraftItem("iron_ingot"), 1),
+                            'B',
+                            new ItemStack(ModItems.lightBulb, 1),
+                            'G',
+                            new ItemStack(getMinecraftItem("stained_glass"), 1, 15)));
         }
         if (ConfigHandler.growLight) {
-            GameRegistry.addRecipe(new ShapedOreRecipe(
-                    new ItemStack(ModBlocks.blockGrowLight, 1),
-                    "III",
-                    "CBC",
-                    "GGG",
-                    'C',
-                    new ItemStack(getMinecraftItem("cobblestone"), 1),
-                    'I',
-                    new ItemStack(getMinecraftItem("iron_ingot"), 1),
-                    'B',
-                    new ItemStack(ModItems.lightBulb, 1),
-                    'G',
-                    new ItemStack(getMinecraftItem("stained_glass"), 1, 6)));
+            GameRegistry.addRecipe(
+                    new ShapedOreRecipe(
+                            new ItemStack(ModBlocks.blockGrowLight, 1),
+                            "III",
+                            "CBC",
+                            "GGG",
+                            'C',
+                            new ItemStack(getMinecraftItem("cobblestone"), 1),
+                            'I',
+                            new ItemStack(getMinecraftItem("iron_ingot"), 1),
+                            'B',
+                            new ItemStack(ModItems.lightBulb, 1),
+                            'G',
+                            new ItemStack(getMinecraftItem("stained_glass"), 1, 6)));
         }
     }
 }

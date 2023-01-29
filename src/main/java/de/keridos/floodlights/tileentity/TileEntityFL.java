@@ -1,18 +1,19 @@
 package de.keridos.floodlights.tileentity;
 
-import de.keridos.floodlights.core.network.message.MessageTileEntityFL;
-import de.keridos.floodlights.handler.PacketHandler;
-import de.keridos.floodlights.reference.Names;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.Packet;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 
+import de.keridos.floodlights.core.network.message.MessageTileEntityFL;
+import de.keridos.floodlights.handler.PacketHandler;
+import de.keridos.floodlights.reference.Names;
+
 /**
- * Created by Keridos on 01.10.14.
- * This Class is the base for all TileEntities within this mod.
+ * Created by Keridos on 01.10.14. This Class is the base for all TileEntities within this mod.
  */
 public class TileEntityFL extends TileEntity {
+
     protected ForgeDirection orientation;
     protected byte state;
     protected String customName;

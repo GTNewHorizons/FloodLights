@@ -1,18 +1,19 @@
 package de.keridos.floodlights.client.render.block;
 
-import de.keridos.floodlights.client.render.model.TileEntitySquareFluorescentLightModel;
-import de.keridos.floodlights.reference.Textures;
-import de.keridos.floodlights.tileentity.TileEntityGrowLight;
-import de.keridos.floodlights.util.RenderUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
+
 import org.lwjgl.opengl.GL11;
 
+import de.keridos.floodlights.client.render.model.TileEntitySquareFluorescentLightModel;
+import de.keridos.floodlights.reference.Textures;
+import de.keridos.floodlights.tileentity.TileEntityGrowLight;
+import de.keridos.floodlights.util.RenderUtil;
+
 /**
- * Created by Keridos on 05.05.2015.
- * This Class
+ * Created by Keridos on 05.05.2015. This Class
  */
 public class TileEntityGrowLightRenderer extends TileEntitySpecialRenderer {
 

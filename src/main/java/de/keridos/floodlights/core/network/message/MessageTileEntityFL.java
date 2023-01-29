@@ -1,5 +1,8 @@
 package de.keridos.floodlights.core.network.message;
 
+import net.minecraft.tileentity.TileEntity;
+import net.minecraftforge.common.util.ForgeDirection;
+
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
@@ -10,14 +13,12 @@ import de.keridos.floodlights.tileentity.TileEntityFLElectric;
 import de.keridos.floodlights.tileentity.TileEntityMetaFloodlight;
 import de.keridos.floodlights.tileentity.TileEntitySmallFloodlight;
 import io.netty.buffer.ByteBuf;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.common.util.ForgeDirection;
 
 /**
- * Created by Keridos on 05.10.14.
- * This Class is the Message that the electric floodlights TileEntity uses.
+ * Created by Keridos on 05.10.14. This Class is the Message that the electric floodlights TileEntity uses.
  */
 public class MessageTileEntityFL implements IMessage {
+
     public int x, y, z, timeRemaining, color, rfStorage;
     public byte orientation, state;
     public boolean rotationState, wasActive;
@@ -26,6 +27,7 @@ public class MessageTileEntityFL implements IMessage {
     public MessageTileEntityFL() {}
 
     public static class MessageHandlerTileEntityFL implements IMessageHandler<MessageTileEntityFL, IMessage> {
+
         @Override
         public IMessage onMessage(MessageTileEntityFL message, MessageContext ctx) {
             TileEntity tileEntity = FloodLights.proxy.getWorld().getTileEntity(message.x, message.y, message.z);
@@ -126,6 +128,13 @@ public class MessageTileEntityFL implements IMessage {
     public String toString() {
         return String.format(
                 "MessageTileEntityFL - x:%s, y:%s, z:%s, timeRemaining:%s, orientation:%s, state:%s, customName:%s, owner:%s",
-                x, y, z, timeRemaining, orientation, state, customName, owner);
+                x,
+                y,
+                z,
+                timeRemaining,
+                orientation,
+                state,
+                customName,
+                owner);
     }
 }

@@ -3,10 +3,10 @@ package de.keridos.floodlights.handler;
 import net.minecraftforge.common.config.Configuration;
 
 /**
- * Created by Keridos on 06.10.14.
- * This Class manages the configuration file.
+ * Created by Keridos on 06.10.14. This Class manages the configuration file.
  */
 public class ConfigHandler {
+
     private static ConfigHandler instance = null;
 
     public static boolean electricFloodlight;
@@ -41,12 +41,12 @@ public class ConfigHandler {
     public void initConfig(Configuration config) {
         config.load();
         config.getCategory("blocks");
-        electricFloodlight =
-                config.getBoolean("electricFloodlightEnabled", "blocks", true, "Enables the electric FloodLight");
-        smallElectricFloodlight = config.getBoolean(
-                "smallElectricFloodlightEnabled", "blocks", true, "Enables the small electric FloodLight");
-        carbonFloodlight =
-                config.getBoolean("carbonFloodlightEnabled", "blocks", true, "Enables the carbon FloodLight");
+        electricFloodlight = config
+                .getBoolean("electricFloodlightEnabled", "blocks", true, "Enables the electric FloodLight");
+        smallElectricFloodlight = config
+                .getBoolean("smallElectricFloodlightEnabled", "blocks", true, "Enables the small electric FloodLight");
+        carbonFloodlight = config
+                .getBoolean("carbonFloodlightEnabled", "blocks", true, "Enables the carbon FloodLight");
         uvFloodlight = config.getBoolean("uvFloodlightEnabled", "blocks", true, "Enables the UV FloodLight");
         growLight = config.getBoolean("growLightEnabled", "blocks", true, "Enables the Grow Light");
 
@@ -65,10 +65,10 @@ public class ConfigHandler {
                 0,
                 100,
                 "Energy Usage in RF/t for the small electric FloodLight");
-        energyUsageUVFloodlight = config.getInt(
-                "energyUsageUVFloodlight", "general", 80, 0, 800, "Energy Usage in RF/t for the UV FloodLight");
-        energyUsageGrowLight =
-                config.getInt("energyUsageGrowLight", "general", 40, 0, 800, "Energy Usage in RF/t for the Grow Light");
+        energyUsageUVFloodlight = config
+                .getInt("energyUsageUVFloodlight", "general", 80, 0, 800, "Energy Usage in RF/t for the UV FloodLight");
+        energyUsageGrowLight = config
+                .getInt("energyUsageGrowLight", "general", 40, 0, 800, "Energy Usage in RF/t for the Grow Light");
         carbonTime = config.getInt(
                 "carbonTime",
                 "general",
@@ -77,7 +77,12 @@ public class ConfigHandler {
                 1000,
                 "How many seconds should 1 coal last in the carbon floodlight (quarter of that for the cone floodlights)? Default:300");
         rangeStraightFloodlight = config.getInt(
-                "rangeStraightFloodlight", "general", 64, 1, 128, "How far should the straight Floodlights go?");
+                "rangeStraightFloodlight",
+                "general",
+                64,
+                1,
+                128,
+                "How far should the straight Floodlights go?");
         rangeConeFloodlight = config.getInt(
                 "rangeConeFloodlight",
                 "general",
@@ -85,8 +90,8 @@ public class ConfigHandler {
                 1,
                 64,
                 "How far should the cone floodlights go? (mind that wide only goes quarter as far) Default:32   ");
-        rangeUVFloodlight =
-                config.getInt("rangeUVFloodlight", "general", 8, 1, 32, "How far should the UV Floodlights go?");
+        rangeUVFloodlight = config
+                .getInt("rangeUVFloodlight", "general", 8, 1, 32, "How far should the UV Floodlights go?");
         chanceGrowLight = config.getFloat(
                 "chanceGrowLight",
                 "general",
@@ -108,10 +113,10 @@ public class ConfigHandler {
                 1.0F,
                 16.0F,
                 "How much damage should the UV Floodlights do per second?");
-        uvLightRendered =
-                config.getBoolean("uvLightRendered", "general", true, "Should the UV Light Block be visible?");
-        IGWNotifierEnabled =
-                config.getBoolean("IGWNotifierEnabled", "general", true, "Should the IGW Notifier be shown?");
+        uvLightRendered = config
+                .getBoolean("uvLightRendered", "general", true, "Should the UV Light Block be visible?");
+        IGWNotifierEnabled = config
+                .getBoolean("IGWNotifierEnabled", "general", true, "Should the IGW Notifier be shown?");
         config.save();
     }
 }

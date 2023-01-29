@@ -4,10 +4,10 @@ import de.keridos.floodlights.init.ModBlocks;
 import igwmod.api.WikiRegistry;
 
 /**
- * Created by Keridos on 02/12/2014.
- * This Class
+ * Created by Keridos on 02/12/2014. This Class
  */
 public class IGWHandler {
+
     private static IGWHandler instance = null;
 
     private IGWHandler() {

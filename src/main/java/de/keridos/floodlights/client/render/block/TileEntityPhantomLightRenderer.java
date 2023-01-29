@@ -1,18 +1,19 @@
 package de.keridos.floodlights.client.render.block;
 
-import de.keridos.floodlights.item.ItemLightDebugTool;
-import de.keridos.floodlights.tileentity.TileEntityUVLightBlock;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
+
 import org.lwjgl.opengl.GL11;
 
+import de.keridos.floodlights.item.ItemLightDebugTool;
+import de.keridos.floodlights.tileentity.TileEntityUVLightBlock;
+
 /**
- * Created by Keridos on 05.05.2015.
- * This Class
+ * Created by Keridos on 05.05.2015. This Class
  */
 public class TileEntityPhantomLightRenderer extends TileEntitySpecialRenderer {
 

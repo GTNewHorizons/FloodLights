@@ -1,27 +1,27 @@
 package de.keridos.floodlights.client.render.item;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.IItemRenderer;
+
+import org.lwjgl.opengl.GL11;
+
 import de.keridos.floodlights.client.render.block.TileEntitySmallFoodlightRenderer;
 import de.keridos.floodlights.client.render.model.TileEntitySmallFluorescentLightModel;
 import de.keridos.floodlights.client.render.model.TileEntitySquareFluorescentLightModel;
 import de.keridos.floodlights.reference.Textures;
 import de.keridos.floodlights.tileentity.TileEntitySmallFloodlight;
-import net.minecraft.client.Minecraft;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.IItemRenderer;
-import org.lwjgl.opengl.GL11;
 
 /**
- * Created by Keridos on 30.06.2015.
- * This Class
+ * Created by Keridos on 30.06.2015. This Class
  */
 public class SmallFloodlightItemRenderer implements IItemRenderer {
 
     private final TileEntitySmallFluorescentLightModel modelSmallFluorescent;
     private final TileEntitySquareFluorescentLightModel modelSquareFluorescent;
 
-    public SmallFloodlightItemRenderer(
-            TileEntitySmallFoodlightRenderer tileEntitySmallFoodlightRenderer,
+    public SmallFloodlightItemRenderer(TileEntitySmallFoodlightRenderer tileEntitySmallFoodlightRenderer,
             TileEntitySmallFloodlight tileEntitySmallFoodlight) {
         this.modelSmallFluorescent = new TileEntitySmallFluorescentLightModel();
         this.modelSquareFluorescent = new TileEntitySquareFluorescentLightModel();
@@ -80,13 +80,13 @@ public class SmallFloodlightItemRenderer implements IItemRenderer {
         float zRotation = 0.0F;
         switch (metadata) {
             case 0:
-                this.modelSmallFluorescent.setRotateAngle(
-                        this.modelSmallFluorescent.shape1, xRotation, yRotation, zRotation);
+                this.modelSmallFluorescent
+                        .setRotateAngle(this.modelSmallFluorescent.shape1, xRotation, yRotation, zRotation);
                 this.modelSmallFluorescent.render(null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
                 break;
             case 1:
-                this.modelSquareFluorescent.setRotateAngle(
-                        this.modelSquareFluorescent.shape1, xRotation, yRotation, zRotation);
+                this.modelSquareFluorescent
+                        .setRotateAngle(this.modelSquareFluorescent.shape1, xRotation, yRotation, zRotation);
                 this.modelSquareFluorescent.render(null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
                 break;
         }

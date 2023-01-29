@@ -1,5 +1,10 @@
 package de.keridos.floodlights.core.proxy;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.item.Item;
+import net.minecraft.world.World;
+import net.minecraftforge.client.MinecraftForgeClient;
+
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import de.keridos.floodlights.client.render.block.RotatableBlockRenderer;
@@ -16,29 +21,26 @@ import de.keridos.floodlights.tileentity.TileEntityGrowLight;
 import de.keridos.floodlights.tileentity.TileEntityPhantomLight;
 import de.keridos.floodlights.tileentity.TileEntitySmallFloodlight;
 import de.keridos.floodlights.util.RenderUtil;
-import net.minecraft.client.Minecraft;
-import net.minecraft.item.Item;
-import net.minecraft.world.World;
-import net.minecraftforge.client.MinecraftForgeClient;
 
 /**
- * Created by Keridos on 28.02.14.
- * This Class is the proxy for the client.
+ * Created by Keridos on 28.02.14. This Class is the proxy for the client.
  */
 public class ClientProxy extends CommonProxy {
+
     @Override
     public void initRenderers() {
         RenderIDs.ROTATABLE_BLOCK = RenderingRegistry.getNextAvailableRenderId();
         RenderingRegistry.registerBlockHandler(RenderIDs.ROTATABLE_BLOCK, new RotatableBlockRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(
-                TileEntitySmallFloodlight.class, new TileEntitySmallFoodlightRenderer());
+        ClientRegistry
+                .bindTileEntitySpecialRenderer(TileEntitySmallFloodlight.class, new TileEntitySmallFoodlightRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityGrowLight.class, new TileEntityGrowLightRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(
-                TileEntityPhantomLight.class, new TileEntityPhantomLightRenderer());
+        ClientRegistry
+                .bindTileEntitySpecialRenderer(TileEntityPhantomLight.class, new TileEntityPhantomLightRenderer());
         MinecraftForgeClient.registerItemRenderer(
                 Item.getItemFromBlock(ModBlocks.blockSmallElectricLight),
                 new SmallFloodlightItemRenderer(
-                        new TileEntitySmallFoodlightRenderer(), new TileEntitySmallFloodlight()));
+                        new TileEntitySmallFoodlightRenderer(),
+                        new TileEntitySmallFloodlight()));
         MinecraftForgeClient.registerItemRenderer(
                 Item.getItemFromBlock(ModBlocks.blockGrowLight),
                 new GrowLightItemRenderer(new TileEntityGrowLightRenderer(), new TileEntityGrowLight()));

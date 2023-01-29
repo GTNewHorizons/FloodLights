@@ -1,5 +1,13 @@
 package de.keridos.floodlights.client.render.block;
 
+import net.minecraft.block.Block;
+import net.minecraft.client.renderer.RenderBlocks;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.world.IBlockAccess;
+import net.minecraftforge.common.util.ForgeDirection;
+
+import org.lwjgl.opengl.GL11;
+
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -7,16 +15,9 @@ import de.keridos.floodlights.init.ModBlocks;
 import de.keridos.floodlights.reference.RenderIDs;
 import de.keridos.floodlights.tileentity.TileEntityFL;
 import de.keridos.floodlights.util.RenderUtil;
-import net.minecraft.block.Block;
-import net.minecraft.client.renderer.RenderBlocks;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.world.IBlockAccess;
-import net.minecraftforge.common.util.ForgeDirection;
-import org.lwjgl.opengl.GL11;
 
 /**
- * Created by Keridos on 04.10.14.
- * This Class renders the rotatable blocks from this mod.
+ * Created by Keridos on 04.10.14. This Class renders the rotatable blocks from this mod.
  */
 @SideOnly(Side.CLIENT)
 public class RotatableBlockRenderer implements ISimpleBlockRenderingHandler {
@@ -29,39 +30,63 @@ public class RotatableBlockRenderer implements ISimpleBlockRenderingHandler {
         t.startDrawingQuads();
         t.setNormal(-1, 0, 0);
         renderer.renderFaceXNeg(
-                block, 0, 0, 0, renderer.getBlockIconFromSideAndMetadata(block, ForgeDirection.WEST.ordinal(), 1));
+                block,
+                0,
+                0,
+                0,
+                renderer.getBlockIconFromSideAndMetadata(block, ForgeDirection.WEST.ordinal(), 1));
         t.draw();
         t.startDrawingQuads();
         t.setNormal(1, 0, 0);
         renderer.renderFaceXPos(
-                block, 0, 0, 0, renderer.getBlockIconFromSideAndMetadata(block, ForgeDirection.EAST.ordinal(), 1));
+                block,
+                0,
+                0,
+                0,
+                renderer.getBlockIconFromSideAndMetadata(block, ForgeDirection.EAST.ordinal(), 1));
         t.draw();
         t.startDrawingQuads();
         t.setNormal(0, 0, -1);
         renderer.renderFaceZNeg(
-                block, 0, 0, 0, renderer.getBlockIconFromSideAndMetadata(block, ForgeDirection.NORTH.ordinal(), 1));
+                block,
+                0,
+                0,
+                0,
+                renderer.getBlockIconFromSideAndMetadata(block, ForgeDirection.NORTH.ordinal(), 1));
         t.draw();
         t.startDrawingQuads();
         t.setNormal(0, 0, 1);
         renderer.renderFaceZPos(
-                block, 0, 0, 0, renderer.getBlockIconFromSideAndMetadata(block, ForgeDirection.SOUTH.ordinal(), 1));
+                block,
+                0,
+                0,
+                0,
+                renderer.getBlockIconFromSideAndMetadata(block, ForgeDirection.SOUTH.ordinal(), 1));
         t.draw();
         t.startDrawingQuads();
         t.setNormal(0, -1, 0);
         renderer.renderFaceYNeg(
-                block, 0, 0, 0, renderer.getBlockIconFromSideAndMetadata(block, ForgeDirection.DOWN.ordinal(), 1));
+                block,
+                0,
+                0,
+                0,
+                renderer.getBlockIconFromSideAndMetadata(block, ForgeDirection.DOWN.ordinal(), 1));
         t.draw();
         t.startDrawingQuads();
         t.setNormal(0, 1, 0);
         renderer.renderFaceYPos(
-                block, 0, 0, 0, renderer.getBlockIconFromSideAndMetadata(block, ForgeDirection.UP.ordinal(), 1));
+                block,
+                0,
+                0,
+                0,
+                renderer.getBlockIconFromSideAndMetadata(block, ForgeDirection.UP.ordinal(), 1));
         t.draw();
         GL11.glPopMatrix();
     }
 
     @Override
-    public boolean renderWorldBlock(
-            IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer) {
+    public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId,
+            RenderBlocks renderer) {
         TileEntityFL l = (TileEntityFL) world.getTileEntity(x, y, z);
         int i1 = l.getOrientation().ordinal();
         int c = l.getColor();
@@ -108,7 +133,13 @@ public class RotatableBlockRenderer implements ISimpleBlockRenderingHandler {
                 cMult = 1.273F; // 1.0F + (float) Math.log10(255 / 137);
             }
             renderer.renderStandardBlockWithColorMultiplier(
-                    block, x, y, z, RenderUtil.r[c] * cMult, RenderUtil.g[c] * cMult, RenderUtil.b[c] * cMult);
+                    block,
+                    x,
+                    y,
+                    z,
+                    RenderUtil.r[c] * cMult,
+                    RenderUtil.g[c] * cMult,
+                    RenderUtil.b[c] * cMult);
         }
         renderer.uvRotateEast = 0;
         renderer.uvRotateWest = 0;

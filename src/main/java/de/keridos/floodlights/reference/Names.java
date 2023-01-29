@@ -1,11 +1,12 @@
 package de.keridos.floodlights.reference;
 
 /**
- * Created by Keridos on 03.10.14.
- * This Class contains the internal names of all blocks, items and NBT Tags.
+ * Created by Keridos on 03.10.14. This Class contains the internal names of all blocks, items and NBT Tags.
  */
 public class Names {
+
     public static final class Blocks {
+
         public static final String ELECTRIC_FLOODLIGHT = "electricFloodlight";
         public static final String SMALL_ELECTRIC_FLOODLIGHT = "smallElectricFloodlightMetaBlock";
         public static final String CARBON_FLOODLIGHT = "carbonFloodlight";
@@ -16,6 +17,7 @@ public class Names {
     }
 
     public static final class Items {
+
         public static final String RAW_FILAMENT = "rawFilament";
         public static final String GLOWING_FILAMENT = "glowingFilament";
         public static final String ELECTRIC_INCANDESCENT_LIGHT_BULB = "electricIncandescentLightBulb";
@@ -26,6 +28,7 @@ public class Names {
     }
 
     public static final class Localizations {
+
         public static final String NONELECTRIC_GUI_TEXT = "gui.floodlights:nonElectricFloodlightTimeRemaining";
         public static final String RF_STORAGE = "gui.floodlights:RFStorage";
         public static final String MODE = "gui.floodlights:mode";
@@ -42,6 +45,7 @@ public class Names {
     }
 
     public static final class NBT {
+
         public static final String ITEMS = "Items";
         public static final String INVERT = "inverted";
         public static final String TIME_REMAINING = "timeRemaining";

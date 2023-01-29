@@ -1,10 +1,10 @@
 package de.keridos.floodlights.util;
 
 /**
- * Created by Keridos on 28.07.2015.
- * This Class
+ * Created by Keridos on 28.07.2015. This Class
  */
 public class RenderUtil {
+
     public static float[] r = new float[16];
     public static float[] g = new float[16];
     public static float[] b = new float[16];

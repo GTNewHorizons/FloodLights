@@ -4,10 +4,10 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
 
 /**
- * Created by Keridos on 05.10.14.
- * This Class listens for FML events.
+ * Created by Keridos on 05.10.14. This Class listens for FML events.
  */
 public class FMLEventListener {
+
     private static FMLEventListener instance = null;
 
     private FMLEventListener() {}

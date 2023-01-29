@@ -3,8 +3,6 @@ package de.keridos.floodlights.tileentity;
 import static de.keridos.floodlights.util.GeneralUtil.getBurnTime;
 import static de.keridos.floodlights.util.GeneralUtil.safeLocalize;
 
-import de.keridos.floodlights.handler.ConfigHandler;
-import de.keridos.floodlights.reference.Names;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -13,11 +11,14 @@ import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
+import de.keridos.floodlights.handler.ConfigHandler;
+import de.keridos.floodlights.reference.Names;
+
 /**
- * Created by Keridos on 09/10/2014.
- * This Class describes the carbon floodlight TileEntity.
+ * Created by Keridos on 09/10/2014. This Class describes the carbon floodlight TileEntity.
  */
 public class TileEntityCarbonFloodlight extends TileEntityMetaFloodlight {
+
     public int timeRemaining;
 
     public TileEntityCarbonFloodlight() {
@@ -155,8 +156,7 @@ public class TileEntityCarbonFloodlight extends TileEntityMetaFloodlight {
             if (active && timeRemaining > 0) {
                 addSource(this.mode);
             }
-            String modeString = (mode == 0
-                    ? Names.Localizations.STRAIGHT
+            String modeString = (mode == 0 ? Names.Localizations.STRAIGHT
                     : mode == 1 ? Names.Localizations.NARROW_CONE : Names.Localizations.WIDE_CONE);
             player.addChatMessage(
                     new ChatComponentText(safeLocalize(Names.Localizations.MODE) + ": " + safeLocalize(modeString)));

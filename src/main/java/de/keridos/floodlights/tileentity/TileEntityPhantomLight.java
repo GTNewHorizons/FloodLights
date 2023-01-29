@@ -1,18 +1,20 @@
 package de.keridos.floodlights.tileentity;
 
-import de.keridos.floodlights.reference.Names;
 import java.util.ArrayList;
+
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagIntArray;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.Constants;
 
+import de.keridos.floodlights.reference.Names;
+
 /**
- * Created by Keridos on 01.10.14.
- * This Class is the base for all TileEntities within this mod.
+ * Created by Keridos on 01.10.14. This Class is the base for all TileEntities within this mod.
  */
 public class TileEntityPhantomLight extends TileEntity {
+
     protected ArrayList<int[]> sources = new ArrayList<int[]>();
     protected boolean update = true;
     protected boolean removeLightOnUpdate = true;
@@ -27,7 +29,7 @@ public class TileEntityPhantomLight extends TileEntity {
                 return;
             }
         }
-        sources.add(new int[] {x, y, z});
+        sources.add(new int[] { x, y, z });
         removeLightOnUpdate = false;
         update = false;
     }

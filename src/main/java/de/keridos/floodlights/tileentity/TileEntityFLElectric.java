@@ -2,6 +2,12 @@ package de.keridos.floodlights.tileentity;
 
 import static de.keridos.floodlights.util.GeneralUtil.isItemStackValidElectrical;
 
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.util.ForgeDirection;
+
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyHandler;
 import cpw.mods.fml.common.Optional;
@@ -11,18 +17,13 @@ import de.keridos.floodlights.util.MathUtil;
 import ic2.api.energy.event.EnergyTileLoadEvent;
 import ic2.api.energy.event.EnergyTileUnloadEvent;
 import ic2.api.energy.tile.IEnergySink;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.util.ForgeDirection;
 
 /**
- * Created by Keridos on 04.05.2015.
- * This Class
+ * Created by Keridos on 04.05.2015. This Class
  */
 @Optional.Interface(iface = "ic2.api.energy.tile.IEnergySink", modid = "IC2")
 public class TileEntityFLElectric extends TileEntityMetaFloodlight implements IEnergyHandler, IEnergySink {
+
     protected boolean wasAddedToEnergyNet;
     protected double storageEU;
     protected EnergyStorage storage = new EnergyStorage(50000);

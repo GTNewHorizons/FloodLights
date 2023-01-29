@@ -2,9 +2,15 @@ package de.keridos.floodlights.compatability;
 
 import static codechicken.nei.api.API.hideItem;
 
+import net.minecraft.block.Block;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.world.World;
+
 import com.InfinityRaider.AgriCraft.api.API;
 import com.InfinityRaider.AgriCraft.api.v3.APIv3;
 import com.InfinityRaider.AgriCraft.api.v3.ICrop;
+
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.ModAPIManager;
 import cpw.mods.fml.common.Optional;
@@ -13,16 +19,12 @@ import de.keridos.floodlights.handler.ConfigHandler;
 import de.keridos.floodlights.init.ModBlocks;
 import de.keridos.floodlights.reference.Reference;
 import de.keridos.floodlights.util.BlockPos;
-import net.minecraft.block.Block;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.world.World;
 
 /**
- * Created by Keridos on 28.02.14.
- * This Class will be used for Mod Compatibility functions.
+ * Created by Keridos on 28.02.14. This Class will be used for Mod Compatibility functions.
  */
 public class ModCompatibility {
+
     private static ModCompatibility instance = null;
 
     public IGWHandler igwHandler = null;
@@ -82,21 +84,18 @@ public class ModCompatibility {
         }
         addVersionCheckerInfo();
         FMLInterModComms.sendMessage(
-                "Waila", "register", "de.keridos.floodlights.compatability.WailaTileHandler.callbackRegister");
+                "Waila",
+                "register",
+                "de.keridos.floodlights.compatability.WailaTileHandler.callbackRegister");
         WrenchAvailable = (BCLoaded || EnderIOLoaded || IC2Loaded || CofhCoreLoaded);
     }
 
     @Optional.Method(modid = "AgriCraft")
     public boolean isBlockValidAgriCraftSeed(Block block, World world, BlockPos blockPos) {
         if (block instanceof ICrop
-                && ((APIv3) API.getAPI(3))
-                        .getCrop(world, blockPos.posX, blockPos.posY, blockPos.posZ)
-                        .hasPlant()
-                && ((APIv3) API.getAPI(3))
-                        .getCrop(world, blockPos.posX, blockPos.posY, blockPos.posZ)
-                        .getPlant()
-                        .getGrowthRequirement()
-                        .canGrow(world, blockPos.posX, blockPos.posY, blockPos.posZ)) {
+                && ((APIv3) API.getAPI(3)).getCrop(world, blockPos.posX, blockPos.posY, blockPos.posZ).hasPlant()
+                && ((APIv3) API.getAPI(3)).getCrop(world, blockPos.posX, blockPos.posY, blockPos.posZ).getPlant()
+                        .getGrowthRequirement().canGrow(world, blockPos.posX, blockPos.posY, blockPos.posZ)) {
             return true;
         }
         return false;

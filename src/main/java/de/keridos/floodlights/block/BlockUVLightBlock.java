@@ -1,20 +1,20 @@
 package de.keridos.floodlights.block;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import de.keridos.floodlights.handler.ConfigHandler;
-import de.keridos.floodlights.init.ModBlocks;
-import de.keridos.floodlights.reference.Names;
-import de.keridos.floodlights.tileentity.TileEntityUVLightBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import de.keridos.floodlights.handler.ConfigHandler;
+import de.keridos.floodlights.init.ModBlocks;
+import de.keridos.floodlights.reference.Names;
+import de.keridos.floodlights.tileentity.TileEntityUVLightBlock;
+
 /**
- * Created by Keridos on 15/09/2015.
- * This Class
+ * Created by Keridos on 15/09/2015. This Class
  */
 public class BlockUVLightBlock extends BlockPhantomLight {
 
@@ -45,10 +45,8 @@ public class BlockUVLightBlock extends BlockPhantomLight {
 
     @Override
     public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side) {
-        return ConfigHandler.uvLightRendered
-                && (side == 0
-                        || (!world.getBlock(x, y, z).isOpaqueCube()
-                                && world.getBlock(x, y, z) != ModBlocks.blockUVLightBlock));
+        return ConfigHandler.uvLightRendered && (side == 0
+                || (!world.getBlock(x, y, z).isOpaqueCube() && world.getBlock(x, y, z) != ModBlocks.blockUVLightBlock));
     }
 
     @Override

@@ -2,21 +2,9 @@ package de.keridos.floodlights.block;
 
 import static de.keridos.floodlights.util.GeneralUtil.safeLocalize;
 
-import buildcraft.api.tools.IToolWrench;
-import cofh.api.item.IToolHammer;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import crazypants.enderio.api.tool.ITool;
-import de.keridos.floodlights.FloodLights;
-import de.keridos.floodlights.compatability.ModCompatibility;
-import de.keridos.floodlights.init.ModBlocks;
-import de.keridos.floodlights.reference.Names;
-import de.keridos.floodlights.tileentity.TileEntityFL;
-import de.keridos.floodlights.tileentity.TileEntityMetaFloodlight;
-import de.keridos.floodlights.tileentity.TileEntitySmallFloodlight;
-import de.keridos.floodlights.util.MathUtil;
 import java.util.ArrayList;
 import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -36,9 +24,22 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
+import buildcraft.api.tools.IToolWrench;
+import cofh.api.item.IToolHammer;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import crazypants.enderio.api.tool.ITool;
+import de.keridos.floodlights.FloodLights;
+import de.keridos.floodlights.compatability.ModCompatibility;
+import de.keridos.floodlights.init.ModBlocks;
+import de.keridos.floodlights.reference.Names;
+import de.keridos.floodlights.tileentity.TileEntityFL;
+import de.keridos.floodlights.tileentity.TileEntityMetaFloodlight;
+import de.keridos.floodlights.tileentity.TileEntitySmallFloodlight;
+import de.keridos.floodlights.util.MathUtil;
+
 /**
- * Created by Keridos on 01.10.14.
- * This Class defines the block properties of the electric floodlight.
+ * Created by Keridos on 01.10.14. This Class defines the block properties of the electric floodlight.
  */
 public class BlockSmallElectricFloodlight extends BlockFL implements ITileEntityProvider {
 
@@ -92,8 +93,8 @@ public class BlockSmallElectricFloodlight extends BlockFL implements ITileEntity
     }
 
     @Override
-    public boolean onBlockActivated(
-            World world, int x, int y, int z, EntityPlayer player, int side, float subX, float subY, float subZ) {
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float subX,
+            float subY, float subZ) {
         if (!world.isRemote && player.getHeldItem() == null && player.isSneaking()) {
             ((TileEntitySmallFloodlight) world.getTileEntity(x, y, z)).toggleInverted();
             String invert = (((TileEntitySmallFloodlight) world.getTileEntity(x, y, z)).getInverted()
@@ -149,8 +150,7 @@ public class BlockSmallElectricFloodlight extends BlockFL implements ITileEntity
                 }
             }
             if (player.getHeldItem().getItem() == Items.dye) {
-                ((TileEntityFL) world.getTileEntity(x, y, z))
-                        .setColor(15 - player.getHeldItem().getItemDamage());
+                ((TileEntityFL) world.getTileEntity(x, y, z)).setColor(15 - player.getHeldItem().getItemDamage());
                 return true;
             } else if (player.getHeldItem().getItem() == Item.getItemFromBlock(Blocks.wool) && !player.isSneaking()) {
                 ((TileEntityFL) world.getTileEntity(x, y, z)).setColor(16);

@@ -12,10 +12,10 @@ import de.keridos.floodlights.item.ItemRawFilament;
 import de.keridos.floodlights.reference.Names;
 
 /**
- * Created by Keridos on 06.10.14.
- * This Class manages all items that the mod uses.
+ * Created by Keridos on 06.10.14. This Class manages all items that the mod uses.
  */
 public class ModItems {
+
     public static final ItemFL rawFilament = new ItemRawFilament();
     public static final ItemFL glowingFilament = new ItemGlowingFilament();
     public static final ItemFL lightBulb = new ItemLightBulb();
