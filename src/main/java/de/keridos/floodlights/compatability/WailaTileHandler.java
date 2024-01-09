@@ -4,11 +4,6 @@ import static de.keridos.floodlights.util.GeneralUtil.safeLocalize;
 
 import java.util.List;
 
-import mcp.mobius.waila.api.IWailaConfigHandler;
-import mcp.mobius.waila.api.IWailaDataAccessor;
-import mcp.mobius.waila.api.IWailaDataProvider;
-import mcp.mobius.waila.api.IWailaRegistrar;
-
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -21,6 +16,10 @@ import de.keridos.floodlights.tileentity.TileEntityCarbonFloodlight;
 import de.keridos.floodlights.tileentity.TileEntityElectricFloodlight;
 import de.keridos.floodlights.tileentity.TileEntityFL;
 import de.keridos.floodlights.tileentity.TileEntityGrowLight;
+import mcp.mobius.waila.api.IWailaConfigHandler;
+import mcp.mobius.waila.api.IWailaDataAccessor;
+import mcp.mobius.waila.api.IWailaDataProvider;
+import mcp.mobius.waila.api.IWailaRegistrar;
 
 /**
  * Created by Keridos on 20.04.2015. This Class
