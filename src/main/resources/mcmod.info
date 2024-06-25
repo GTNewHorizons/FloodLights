@@ -12,10 +12,6 @@
 		"credits": "Pahimar for EE3 and his Lets Mod Tutorials (learned and used quite some stuff from there)",
 		"logoFile": "",
 		"screenshots": [],
-		"parent": "",
-		"requiredMods": ["Forge"],
-		"dependencies": ["IC2"],
-		"dependants": [],
-		"useDependencyInformation": true
+		"parent": ""
 	}]
 }
