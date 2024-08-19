@@ -3,6 +3,7 @@ package de.keridos.floodlights.client.render.block;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.common.util.ForgeDirection;
 
@@ -87,7 +88,12 @@ public class RotatableBlockRenderer implements ISimpleBlockRenderingHandler {
     @Override
     public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId,
             RenderBlocks renderer) {
-        TileEntityFL l = (TileEntityFL) world.getTileEntity(x, y, z);
+        TileEntity tileEntity = world.getTileEntity(x, y, z);
+        if (!(tileEntity instanceof TileEntityFL)) {
+            return false;
+        }
+
+        TileEntityFL l = (TileEntityFL) tileEntity;
         int i1 = l.getOrientation().ordinal();
         int c = l.getColor();
         switch (i1) {
