@@ -65,8 +65,8 @@ public class TileEntityMetaFloodlight extends TileEntityFL implements ISidedInve
                 TileEntityPhantomLight light = (TileEntityPhantomLight) tile;
                 light.addSource(this.xCoord, this.yCoord, this.zCoord);
                 worldObj.markBlockRangeForRenderUpdate(x, y, z, x, y, z);
-                return;
             }
+            return;
         }
         this.toggleUpdateRun();
     }
