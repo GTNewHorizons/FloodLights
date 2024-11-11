@@ -7,6 +7,7 @@ import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.tileentity.TileEntity;
 
 import de.keridos.floodlights.handler.ConfigHandler;
 import de.keridos.floodlights.init.ModBlocks;
@@ -59,12 +60,15 @@ public class TileEntityMetaFloodlight extends TileEntityFL implements ISidedInve
             return;
         }
         if (worldObj.setBlock(x, y, z, ModBlocks.blockPhantomLight)) {
-            TileEntityPhantomLight light = (TileEntityPhantomLight) worldObj.getTileEntity(x, y, z);
-            light.addSource(this.xCoord, this.yCoord, this.zCoord);
-            worldObj.markBlockRangeForRenderUpdate(x, y, z, x, y, z);
-        } else {
-            this.toggleUpdateRun();
+            TileEntity tile = worldObj.getTileEntity(x, y, z);
+            if (tile instanceof TileEntityPhantomLight) {
+                TileEntityPhantomLight light = (TileEntityPhantomLight) tile;
+                light.addSource(this.xCoord, this.yCoord, this.zCoord);
+                worldObj.markBlockRangeForRenderUpdate(x, y, z, x, y, z);
+            }
+            return;
         }
+        this.toggleUpdateRun();
     }
 
     @Override
