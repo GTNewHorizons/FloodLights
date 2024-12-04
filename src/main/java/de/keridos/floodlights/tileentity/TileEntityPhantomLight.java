@@ -51,7 +51,11 @@ public class TileEntityPhantomLight extends TileEntity {
     }
 
     public void updateAllSources() {
-        for (int[] source : sources) {
+        // Create a copy of sources, because sources can be modified while we update it here.
+        ArrayList<int[]> sourcesCopy = new ArrayList<>();
+        sourcesCopy.addAll(sources);
+
+        for (int[] source : sourcesCopy) {
             TileEntity te = worldObj.getTileEntity(source[0], source[1], source[2]);
             if (te != null && te instanceof TileEntityMetaFloodlight) {
                 ((TileEntityMetaFloodlight) te).toggleUpdateRun();
