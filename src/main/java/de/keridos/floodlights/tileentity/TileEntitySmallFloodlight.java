@@ -9,7 +9,6 @@ import net.minecraftforge.common.util.ForgeDirection;
 import cofh.api.energy.IEnergyContainerItem;
 import de.keridos.floodlights.compatability.ModCompatibility;
 import de.keridos.floodlights.handler.ConfigHandler;
-import de.keridos.floodlights.init.ModBlocks;
 import de.keridos.floodlights.reference.Names;
 import de.keridos.floodlights.util.MathUtil;
 import ic2.api.item.ElectricItem;
@@ -84,17 +83,7 @@ public class TileEntitySmallFloodlight extends TileEntityFLElectric {
             int x = this.xCoord + rotatedCoords[0];
             int y = this.yCoord + rotatedCoords[1];
             int z = this.zCoord + rotatedCoords[2];
-            if (remove) {
-                if (worldObj.getBlock(x, y, z) == ModBlocks.blockPhantomLight) {
-                    TileEntityPhantomLight light = (TileEntityPhantomLight) worldObj.getTileEntity(x, y, z);
-                    light.removeSource(this.xCoord, this.yCoord, this.zCoord);
-                }
-            } else if (worldObj.getBlock(x, y, z).isAir(worldObj, x, y, z)) {
-                setLight(x, y, z);
-            } else if (worldObj.getBlock(x, y, z) == ModBlocks.blockPhantomLight) {
-                TileEntityPhantomLight light = (TileEntityPhantomLight) worldObj.getTileEntity(x, y, z);
-                light.addSource(this.xCoord, this.yCoord, this.zCoord);
-            }
+            setLightChecked(x, y, z, remove);
         }
     }
 
