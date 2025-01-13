@@ -57,7 +57,7 @@ public class ConfigHandler {
                 20,
                 0,
                 1000,
-                "Energy Usage in RF/t for the electric FloodLight (x4 for the cone floodlights)");
+                "Energy Usage in RF/t for the electric FloodLight (x2 for the cone floodlights)");
         energyUsageSmallFloodlight = config.getInt(
                 "energyUsageSmallFloodlight",
                 "general",
