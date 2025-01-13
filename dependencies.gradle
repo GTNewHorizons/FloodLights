@@ -1,6 +1,6 @@
 dependencies {
     compileOnly('com.github.GTNewHorizons:BuildCraft:7.1.39:api') { transitive = false }
-    compileOnly('com.github.GTNewHorizons:EnderIO:2.9.1:api') { transitive = false }
+    compileOnly('com.github.GTNewHorizons:EnderIO:2.9.1:dev') { transitive = false }
     compileOnly('com.github.GTNewHorizons:NotEnoughItems:2.7.8-GTNH:dev') { transitive = false }
     compileOnly('com.github.GTNewHorizons:waila:1.8.2:api') { transitive = false }
     compileOnly('curse.maven:agricraft-225635:2284133-sources')
