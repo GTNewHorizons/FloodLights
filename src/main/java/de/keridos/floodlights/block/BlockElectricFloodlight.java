@@ -32,6 +32,7 @@ public class BlockElectricFloodlight extends BlockFL implements ITileEntityProvi
     public BlockElectricFloodlight() {
         super(Names.Blocks.ELECTRIC_FLOODLIGHT, Material.rock, soundTypeMetal, 2.5F);
         setHarvestLevel("pickaxe", 1);
+        isBlockContainer = true;
     }
 
     @Override

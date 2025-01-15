@@ -46,6 +46,7 @@ public class BlockSmallElectricFloodlight extends BlockFL implements ITileEntity
     public BlockSmallElectricFloodlight() {
         super(Names.Blocks.SMALL_ELECTRIC_FLOODLIGHT, Material.rock, soundTypeMetal, 2.5F);
         setHarvestLevel("pickaxe", 1);
+        isBlockContainer = true;
     }
 
     @Override

@@ -32,6 +32,7 @@ public class BlockCarbonFloodlight extends BlockFL implements ITileEntityProvide
     public BlockCarbonFloodlight() {
         super(Names.Blocks.CARBON_FLOODLIGHT, Material.rock, soundTypeMetal, 2.5F);
         setHarvestLevel("pickaxe", 1);
+        isBlockContainer = true;
     }
 
     @Override

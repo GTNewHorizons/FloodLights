@@ -28,6 +28,7 @@ public class BlockPhantomLight extends BlockFL implements ITileEntityProvider {
     public BlockPhantomLight(String name, Material material, SoundType soundType, float hardness) {
         super(name, material, soundType, hardness);
         setHarvestLevel("pickaxe", 1);
+        isBlockContainer = true;
     }
 
     @Override
