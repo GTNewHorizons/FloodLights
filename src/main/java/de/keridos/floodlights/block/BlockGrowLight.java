@@ -38,6 +38,7 @@ public class BlockGrowLight extends BlockFL implements ITileEntityProvider {
     public BlockGrowLight() {
         super(Names.Blocks.GROW_LIGHT, Material.rock, soundTypeMetal, 2.5F);
         setHarvestLevel("pickaxe", 1);
+        isBlockContainer = true;
     }
 
     @Override

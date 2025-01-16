@@ -31,6 +31,7 @@ public class BlockUVLight extends BlockFL implements ITileEntityProvider {
     public BlockUVLight() {
         super(Names.Blocks.UV_FLOODLIGHT, Material.rock, soundTypeMetal, 2.5F);
         setHarvestLevel("pickaxe", 1);
+        isBlockContainer = true;
     }
 
     @Override
