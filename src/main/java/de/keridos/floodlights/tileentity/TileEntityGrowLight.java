@@ -36,6 +36,7 @@ public class TileEntityGrowLight extends TileEntityFLElectric {
         setLightChecked(x, y, z, remove);
     }
 
+    @Override
     public void updateEntity() {
         super.updateEntity();
         World world = this.getWorldObj();
