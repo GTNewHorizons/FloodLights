@@ -22,16 +22,16 @@ public class TileEntitySmallFloodlight extends TileEntityFLElectric {
     }
 
     @Override
-    public void readFromNBT(NBTTagCompound nbtTagCompound) {
-        super.readFromNBT(nbtTagCompound);
+    public void readOwnFromNBT(NBTTagCompound nbtTagCompound) {
+        super.readOwnFromNBT(nbtTagCompound);
         if (nbtTagCompound.hasKey(Names.NBT.ROTATION_STATE)) {
             this.rotationState = nbtTagCompound.getBoolean(Names.NBT.ROTATION_STATE);
         }
     }
 
     @Override
-    public void writeToNBT(NBTTagCompound nbtTagCompound) {
-        super.writeToNBT(nbtTagCompound);
+    public void writeOwnToNBT(NBTTagCompound nbtTagCompound) {
+        super.writeOwnToNBT(nbtTagCompound);
         nbtTagCompound.setBoolean(Names.NBT.ROTATION_STATE, rotationState);
     }
 

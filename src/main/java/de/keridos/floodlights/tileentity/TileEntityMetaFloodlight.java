@@ -75,8 +75,8 @@ public class TileEntityMetaFloodlight extends TileEntityFL implements ISidedInve
     }
 
     @Override
-    public void readFromNBT(NBTTagCompound nbtTagCompound) {
-        super.readFromNBT(nbtTagCompound);
+    public void readOwnFromNBT(NBTTagCompound nbtTagCompound) {
+        super.readOwnFromNBT(nbtTagCompound);
         if (nbtTagCompound.hasKey(Names.NBT.STATE)) {
             this.active = (nbtTagCompound.getInteger(Names.NBT.STATE) != 0);
         }
@@ -94,8 +94,8 @@ public class TileEntityMetaFloodlight extends TileEntityFL implements ISidedInve
     }
 
     @Override
-    public void writeToNBT(NBTTagCompound nbtTagCompound) {
-        super.writeToNBT(nbtTagCompound);
+    public void writeOwnToNBT(NBTTagCompound nbtTagCompound) {
+        super.writeOwnToNBT(nbtTagCompound);
         nbtTagCompound.setBoolean(Names.NBT.WAS_ACTIVE, wasActive);
         nbtTagCompound.setByte(Names.NBT.STATE, state);
         NBTTagList list = new NBTTagList();

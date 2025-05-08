@@ -40,8 +40,8 @@ public class TileEntityFLElectric extends TileEntityMetaFloodlight implements IE
     }
 
     @Override
-    public void readFromNBT(NBTTagCompound nbtTagCompound) {
-        super.readFromNBT(nbtTagCompound);
+    public void readOwnFromNBT(NBTTagCompound nbtTagCompound) {
+        super.readOwnFromNBT(nbtTagCompound);
         storage.readFromNBT(nbtTagCompound);
         if (nbtTagCompound.hasKey(Names.NBT.STORAGE_EU)) {
             this.storageEU = nbtTagCompound.getDouble(Names.NBT.STORAGE_EU);
@@ -49,8 +49,8 @@ public class TileEntityFLElectric extends TileEntityMetaFloodlight implements IE
     }
 
     @Override
-    public void writeToNBT(NBTTagCompound nbtTagCompound) {
-        super.writeToNBT(nbtTagCompound);
+    public void writeOwnToNBT(NBTTagCompound nbtTagCompound) {
+        super.writeOwnToNBT(nbtTagCompound);
         storage.writeToNBT(nbtTagCompound);
         nbtTagCompound.setDouble(Names.NBT.STORAGE_EU, storageEU);
     }

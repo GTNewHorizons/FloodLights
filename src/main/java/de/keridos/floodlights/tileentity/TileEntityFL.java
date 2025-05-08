@@ -86,6 +86,10 @@ public class TileEntityFL extends TileEntity {
     @Override
     public void readFromNBT(NBTTagCompound nbtTagCompound) {
         super.readFromNBT(nbtTagCompound);
+        readOwnFromNBT(nbtTagCompound);
+    }
+
+    public void readOwnFromNBT(NBTTagCompound nbtTagCompound) {
         if (nbtTagCompound.hasKey(Names.NBT.DIRECTION)) {
             this.orientation = ForgeDirection.getOrientation(nbtTagCompound.getByte(Names.NBT.DIRECTION));
         }
@@ -112,6 +116,10 @@ public class TileEntityFL extends TileEntity {
     @Override
     public void writeToNBT(NBTTagCompound nbtTagCompound) {
         super.writeToNBT(nbtTagCompound);
+        writeOwnToNBT(nbtTagCompound);
+    }
+
+    public void writeOwnToNBT(NBTTagCompound nbtTagCompound) {
         nbtTagCompound.setByte(Names.NBT.DIRECTION, (byte) orientation.ordinal());
         nbtTagCompound.setBoolean(Names.NBT.INVERT, inverted);
         nbtTagCompound.setByte(Names.NBT.STATE, state);

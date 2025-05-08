@@ -1,13 +1,13 @@
 package de.keridos.floodlights.block;
 
-import java.util.Random;
+import java.util.ArrayList;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.item.EntityItem;
-import net.minecraft.inventory.IInventory;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -86,47 +86,52 @@ public class BlockFL extends Block {
     }
 
     @Override
-    public void breakBlock(World world, int x, int y, int z, Block block, int meta) {
-        dropInventory(world, x, y, z);
-        super.breakBlock(world, x, y, z, block, 0);
+    public boolean removedByPlayer(World world, EntityPlayer player, int x, int y, int z, boolean willHarvest) {
+        if (willHarvest) {
+            return true;
+        }
+        return super.removedByPlayer(world, player, x, y, z, willHarvest);
+    }
+
+    @Override
+    public void harvestBlock(World worldIn, EntityPlayer player, int x, int y, int z, int meta) {
+        super.harvestBlock(worldIn, player, x, y, z, meta);
+        worldIn.setBlockToAir(x, y, z);
+    }
+
+    @Override
+    public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
+        TileEntity tileEntity = world.getTileEntity(x, y, z);
+
+        if (tileEntity instanceof TileEntityFL) {
+            TileEntityFL tileEntityFL = ((TileEntityFL) tileEntity);
+            NBTTagCompound nbtTagCompound = new NBTTagCompound();
+            ArrayList<ItemStack> drops = new ArrayList<>();
+
+            tileEntityFL.writeOwnToNBT(nbtTagCompound);
+            ItemStack stack = new ItemStack(Item.getItemFromBlock(this), 1, 0);
+            stack.setTagCompound(nbtTagCompound);
+
+            drops.add(stack);
+            return drops;
+        }
+
+        return super.getDrops(world, x, y, z, metadata, fortune);
     }
 
     @Override
     public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entityLiving, ItemStack itemStack) {
-        if (world.getTileEntity(x, y, z) instanceof TileEntityFL) {
+        TileEntity tile = world.getTileEntity(x, y, z);
+        if (tile instanceof TileEntityFL) {
+            TileEntityFL tileFL = ((TileEntityFL) world.getTileEntity(x, y, z));
+            if (itemStack.hasTagCompound()) {
+                tileFL.readOwnFromNBT(itemStack.getTagCompound());
+            }
             if (itemStack.hasDisplayName()) {
-                ((TileEntityFL) world.getTileEntity(x, y, z)).setCustomName(itemStack.getDisplayName());
+                tileFL.setCustomName(itemStack.getDisplayName());
             }
-            ((TileEntityFL) world.getTileEntity(x, y, z))
-                    .setOrientation(ForgeDirection.getOrientation(getFacing(entityLiving)));
+            tileFL.setOrientation(ForgeDirection.getOrientation(getFacing(entityLiving)));
             world.setBlockMetadataWithNotify(x, y, z, getFacing(entityLiving), 2);
-        }
-    }
-
-    protected void dropInventory(World world, int x, int y, int z) {
-        TileEntity tileEntity = world.getTileEntity(x, y, z);
-        if (!(tileEntity instanceof IInventory)) {
-            return;
-        }
-        IInventory inventory = (IInventory) tileEntity;
-        for (int i = 0; i < inventory.getSizeInventory(); i++) {
-            ItemStack itemStack = inventory.getStackInSlot(i);
-            if (itemStack != null && itemStack.stackSize > 0) {
-                Random rand = new Random();
-                float dX = rand.nextFloat() * 0.8F + 0.1F;
-                float dY = rand.nextFloat() * 0.8F + 0.1F;
-                float dZ = rand.nextFloat() * 0.8F + 0.1F;
-                EntityItem entityItem = new EntityItem(world, x + dX, y + dY, z + dZ, itemStack.copy());
-                if (itemStack.hasTagCompound()) {
-                    entityItem.getEntityItem().setTagCompound((NBTTagCompound) itemStack.getTagCompound().copy());
-                }
-                float factor = 0.05F;
-                entityItem.motionX = rand.nextGaussian() * factor;
-                entityItem.motionY = rand.nextGaussian() * factor + 0.2F;
-                entityItem.motionZ = rand.nextGaussian() * factor;
-                world.spawnEntityInWorld(entityItem);
-                itemStack.stackSize = 0;
-            }
         }
     }
 
