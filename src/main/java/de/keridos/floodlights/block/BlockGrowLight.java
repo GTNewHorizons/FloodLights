@@ -12,6 +12,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
@@ -206,9 +207,13 @@ public class BlockGrowLight extends BlockFL implements ITileEntityProvider {
 
     @Override
     public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entityLiving, ItemStack itemStack) {
-        if (world.getTileEntity(x, y, z) instanceof TileEntityFL) {
+        TileEntity tile = world.getTileEntity(x, y, z);
+        if (tile instanceof TileEntityFL tileFL) {
+            if (itemStack.hasTagCompound()) {
+                tileFL.readOwnFromNBT(itemStack.getTagCompound());
+            }
             if (itemStack.hasDisplayName()) {
-                ((TileEntityFL) world.getTileEntity(x, y, z)).setCustomName(itemStack.getDisplayName());
+                tileFL.setCustomName(itemStack.getDisplayName());
             }
             ((TileEntityFL) world.getTileEntity(x, y, z)).setOrientation(ForgeDirection.DOWN);
         }

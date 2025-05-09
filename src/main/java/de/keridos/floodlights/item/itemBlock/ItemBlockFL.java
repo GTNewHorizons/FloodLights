@@ -4,24 +4,14 @@ import java.util.List;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemBlockWithMetadata;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 
-/**
- * Created by Keridos on 14.07.2015. This Class
- */
-public class ItemBlockSmallElectricMetaBlock extends ItemBlockWithMetadata {
+public class ItemBlockFL extends ItemBlock {
 
-    private static final String[] subNames = { "smallFluorescent", "squareFluorescent" };
-
-    public ItemBlockSmallElectricMetaBlock(Block block) {
-        super(block, block);
-    }
-
-    @Override
-    public String getUnlocalizedName(ItemStack itemStack) {
-        return this.getUnlocalizedName() + "_" + subNames[itemStack.getItemDamage()];
+    public ItemBlockFL(Block block) {
+        super(block);
     }
 
     @Override

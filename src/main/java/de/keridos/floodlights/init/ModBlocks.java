@@ -10,6 +10,7 @@ import de.keridos.floodlights.block.BlockPhantomLight;
 import de.keridos.floodlights.block.BlockSmallElectricFloodlight;
 import de.keridos.floodlights.block.BlockUVLight;
 import de.keridos.floodlights.block.BlockUVLightBlock;
+import de.keridos.floodlights.item.itemBlock.ItemBlockFL;
 import de.keridos.floodlights.item.itemBlock.ItemBlockSmallElectricMetaBlock;
 import de.keridos.floodlights.reference.Names;
 import de.keridos.floodlights.reference.Reference;
@@ -45,16 +46,16 @@ public class ModBlocks {
     }
 
     public static void registerBlocks() {
-        GameRegistry.registerBlock(blockElectricLight, Names.Blocks.ELECTRIC_FLOODLIGHT);
-        GameRegistry.registerBlock(blockCarbonLight, Names.Blocks.CARBON_FLOODLIGHT);
-        GameRegistry.registerBlock(blockPhantomLight, Names.Blocks.PHANTOM_LIGHT);
+        GameRegistry.registerBlock(blockElectricLight, ItemBlockFL.class, Names.Blocks.ELECTRIC_FLOODLIGHT);
+        GameRegistry.registerBlock(blockCarbonLight, ItemBlockFL.class, Names.Blocks.CARBON_FLOODLIGHT);
+        GameRegistry.registerBlock(blockPhantomLight, ItemBlockFL.class, Names.Blocks.PHANTOM_LIGHT);
         GameRegistry.registerBlock(
                 blockSmallElectricLight,
                 ItemBlockSmallElectricMetaBlock.class,
                 Names.Blocks.SMALL_ELECTRIC_FLOODLIGHT);
-        GameRegistry.registerBlock(blockUVLight, Names.Blocks.UV_FLOODLIGHT);
-        GameRegistry.registerBlock(blockUVLightBlock, Names.Blocks.UV_LIGHTBLOCK);
-        GameRegistry.registerBlock(blockGrowLight, Names.Blocks.GROW_LIGHT);
+        GameRegistry.registerBlock(blockUVLight, ItemBlockFL.class, Names.Blocks.UV_FLOODLIGHT);
+        GameRegistry.registerBlock(blockUVLightBlock, ItemBlockFL.class, Names.Blocks.UV_LIGHTBLOCK);
+        GameRegistry.registerBlock(blockGrowLight, ItemBlockFL.class, Names.Blocks.GROW_LIGHT);
     }
 
     public static void registerTileEntities() {

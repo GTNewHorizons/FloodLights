@@ -16,6 +16,8 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.MovingObjectPosition;
@@ -266,20 +268,34 @@ public class BlockSmallElectricFloodlight extends BlockFL implements ITileEntity
 
     @Override
     public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entityLiving, ItemStack itemStack) {
-        if (world.getTileEntity(x, y, z) instanceof TileEntityFL) {
-            if (itemStack.hasDisplayName()) {
-                ((TileEntityFL) world.getTileEntity(x, y, z)).setCustomName(itemStack.getDisplayName());
+        if (world.getTileEntity(x, y, z) instanceof TileEntityFL tileFL) {
+            if (itemStack.hasTagCompound()) {
+                tileFL.readOwnFromNBT(itemStack.getTagCompound());
             }
-            ((TileEntityFL) world.getTileEntity(x, y, z))
-                    .setOrientation(ForgeDirection.getOrientation(getFacing(entityLiving)));
+            if (itemStack.hasDisplayName()) {
+                tileFL.setCustomName(itemStack.getDisplayName());
+            }
+            tileFL.setOrientation(ForgeDirection.getOrientation(getFacing(entityLiving)));
         }
     }
 
     @Override
     public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
-        ArrayList<ItemStack> drops = new ArrayList<ItemStack>();
-        drops.add(0, new ItemStack(ModBlocks.blockSmallElectricLight, 1, metadata));
-        return drops;
+        TileEntity tileEntity = world.getTileEntity(x, y, z);
+
+        if (tileEntity instanceof TileEntityFL tileEntityFL) {
+            NBTTagCompound nbtTagCompound = new NBTTagCompound();
+            ArrayList<ItemStack> drops = new ArrayList<>();
+
+            tileEntityFL.writeOwnToNBT(nbtTagCompound);
+            ItemStack stack = new ItemStack(ModBlocks.blockSmallElectricLight, 1, metadata);
+            stack.setTagCompound(nbtTagCompound);
+
+            drops.add(stack);
+            return drops;
+        }
+
+        return super.getDrops(world, x, y, z, metadata, fortune);
     }
 
     @Override
