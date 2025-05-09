@@ -208,8 +208,7 @@ public class BlockGrowLight extends BlockFL implements ITileEntityProvider {
     @Override
     public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entityLiving, ItemStack itemStack) {
         TileEntity tile = world.getTileEntity(x, y, z);
-        if (tile instanceof TileEntityFL) {
-            TileEntityFL tileFL = ((TileEntityFL) world.getTileEntity(x, y, z));
+        if (tile instanceof TileEntityFL tileFL) {
             if (itemStack.hasTagCompound()) {
                 tileFL.readOwnFromNBT(itemStack.getTagCompound());
             }

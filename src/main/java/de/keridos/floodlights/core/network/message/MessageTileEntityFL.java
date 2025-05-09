@@ -31,12 +31,12 @@ public class MessageTileEntityFL implements IMessage {
         @Override
         public IMessage onMessage(MessageTileEntityFL message, MessageContext ctx) {
             TileEntity tileEntity = FloodLights.proxy.getWorld().getTileEntity(message.x, message.y, message.z);
-            if (tileEntity instanceof TileEntityFL) {
-                ((TileEntityFL) tileEntity).setOrientation(message.orientation);
-                ((TileEntityFL) tileEntity).setState(message.state);
-                ((TileEntityFL) tileEntity).setCustomName(message.customName);
-                ((TileEntityFL) tileEntity).setOwner(message.owner);
-                ((TileEntityFL) tileEntity).setColor(message.color);
+            if (tileEntity instanceof TileEntityFL tileEntityFL) {
+                tileEntityFL.setOrientation(message.orientation);
+                tileEntityFL.setState(message.state);
+                tileEntityFL.setCustomName(message.customName);
+                tileEntityFL.setOwner(message.owner);
+                tileEntityFL.setColor(message.color);
             }
             if (tileEntity instanceof TileEntityCarbonFloodlight) {
                 ((TileEntityCarbonFloodlight) tileEntity).timeRemaining = message.timeRemaining;
@@ -55,8 +55,7 @@ public class MessageTileEntityFL implements IMessage {
     }
 
     public MessageTileEntityFL(TileEntity tileEntity) {
-        if (tileEntity instanceof TileEntityFL) {
-            TileEntityFL tileEntityFL = (TileEntityFL) tileEntity;
+        if (tileEntity instanceof TileEntityFL tileEntityFL) {
             this.x = tileEntityFL.xCoord;
             this.y = tileEntityFL.yCoord;
             this.z = tileEntityFL.zCoord;

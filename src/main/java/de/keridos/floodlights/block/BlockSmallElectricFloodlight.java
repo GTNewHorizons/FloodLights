@@ -268,8 +268,7 @@ public class BlockSmallElectricFloodlight extends BlockFL implements ITileEntity
 
     @Override
     public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entityLiving, ItemStack itemStack) {
-        if (world.getTileEntity(x, y, z) instanceof TileEntityFL) {
-            TileEntityFL tileFL = ((TileEntityFL) world.getTileEntity(x, y, z));
+        if (world.getTileEntity(x, y, z) instanceof TileEntityFL tileFL) {
             if (itemStack.hasTagCompound()) {
                 tileFL.readOwnFromNBT(itemStack.getTagCompound());
             }
@@ -284,8 +283,7 @@ public class BlockSmallElectricFloodlight extends BlockFL implements ITileEntity
     public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
         TileEntity tileEntity = world.getTileEntity(x, y, z);
 
-        if (tileEntity instanceof TileEntityFL) {
-            TileEntityFL tileEntityFL = ((TileEntityFL) tileEntity);
+        if (tileEntity instanceof TileEntityFL tileEntityFL) {
             NBTTagCompound nbtTagCompound = new NBTTagCompound();
             ArrayList<ItemStack> drops = new ArrayList<>();
 
