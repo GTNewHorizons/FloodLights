@@ -2,7 +2,6 @@ package de.keridos.floodlights;
 
 import java.util.Map;
 
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -14,7 +13,6 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkCheckHandler;
 import cpw.mods.fml.relauncher.Side;
 import de.keridos.floodlights.compatability.ModCompatibility;
-import de.keridos.floodlights.core.EventListener;
 import de.keridos.floodlights.core.FMLEventListener;
 import de.keridos.floodlights.core.proxy.CommonProxy;
 import de.keridos.floodlights.handler.ConfigHandler;
@@ -80,7 +78,6 @@ public class FloodLights {
     public static void postInit(FMLServerStartingEvent event) {}
 
     public void registerEventListeners() {
-        MinecraftForge.EVENT_BUS.register(EventListener.getInstance());
         // some events, especially tick, are handled on FML bus
         FMLCommonHandler.instance().bus().register(FMLEventListener.getInstance());
     }
